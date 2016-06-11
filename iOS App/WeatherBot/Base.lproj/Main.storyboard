@@ -72,7 +72,23 @@
                     <view key="view" contentMode="scaleToFill" id="Z1d-lC-7Zh">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4r-LE-MYp">
+                                <rect key="frame" x="225" y="214" width="150" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="7Ak-W0-uJ2"/>
+                                    <constraint firstAttribute="height" constant="100" id="W1J-uA-FPm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="i4r-LE-MYp" firstAttribute="centerX" secondItem="Z1d-lC-7Zh" secondAttribute="centerX" id="IUe-gq-WqU"/>
+                            <constraint firstItem="i4r-LE-MYp" firstAttribute="top" secondItem="XpE-1q-MLP" secondAttribute="bottom" constant="150" id="enV-8h-l78"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Settings" id="qPz-SO-xk2"/>
                 </viewController>
