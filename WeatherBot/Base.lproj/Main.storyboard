@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="TrZ-Q8-tgC">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Servers-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ServersViewController" customModule="WeatherBot" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -17,9 +18,125 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
+                    <navigationItem key="navigationItem" title="Servers" id="ifB-An-1iN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="2138" y="187"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="A0u-IQ-4H6">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="RDv-cd-3ic" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="nak-RN-Imi"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="5Ze-C3-d2Y">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="Po8-Tl-WDz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="19u-g9-iSr" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1382" y="187"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="UuE-eA-FMD">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="TrZ-Q8-tgC" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" id="aQN-E9-NXF">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="RDv-cd-3ic" kind="relationship" relationship="viewControllers" id="yfV-6C-0a6"/>
+                        <segue destination="dZK-YV-KQf" kind="relationship" relationship="viewControllers" id="i3B-AI-ohk"/>
+                        <segue destination="bS9-hI-Rkr" kind="relationship" relationship="viewControllers" id="JJl-cv-F64"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="EJQ-BE-UHK" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="510" y="995"/>
+        </scene>
+        <!--WeatherBot-->
+        <scene sceneID="iof-iN-Igm">
+            <objects>
+                <viewController id="0AL-ry-wc2" customClass="ViewController" customModule="WeatherBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="QHr-d6-5gf"/>
+                        <viewControllerLayoutGuide type="bottom" id="gpA-it-nAY"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="t77-pu-39s">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="WeatherBot" id="hdI-Fy-YYa"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yKe-wA-19I" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2138" y="995"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="oHt-pL-ez7">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dZK-YV-KQf" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="i1d-CQ-AWl"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xix-Vn-sSX">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="0AL-ry-wc2" kind="relationship" relationship="rootViewController" id="e9i-9F-cHE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="flG-u1-mOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1382" y="995"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="RpH-dJ-IDG">
+            <objects>
+                <viewController id="jKH-Zi-WBa" customClass="SettingsViewController" customModule="WeatherBot" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="XpE-1q-MLP"/>
+                        <viewControllerLayoutGuide type="bottom" id="LJ3-dS-e8C"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Z1d-lC-7Zh">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Settings" id="qPz-SO-xk2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aDD-m0-em3" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2138" y="1751"/>
+        </scene>
+        <!--Item-->
+        <scene sceneID="5r8-IF-fWI">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bS9-hI-Rkr" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="ZLE-d0-eNQ"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="AQN-bg-Vrb">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="jKH-Zi-WBa" kind="relationship" relationship="rootViewController" id="4a7-tB-oxd"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PaX-J6-DLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1382" y="1751"/>
         </scene>
     </scenes>
 </document>

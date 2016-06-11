@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import SwiftyBeaver
 
 class ViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        if ConnectionManager.sharedManager.isConnectedToServer() {
+            
+        } else {
+            log.debug("No server connected, showing dialog")
+            self.tabBarController?.selectedIndex = 0
+        }
+        
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
     }
 
     override func didReceiveMemoryWarning() {
