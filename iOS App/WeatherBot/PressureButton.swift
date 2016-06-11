@@ -9,9 +9,9 @@
 import UIKit
 
 class PressureButton: BaseButton {
-
-    init(pressure: Double, frame: CGRect) {
-        super.init(frame: frame)
+    
+    init(pressure: Double, frame: CGRect, closure: () -> ()) {
+        super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "pressure")
         self.label?.text = "\(pressure) hPa"
     }
@@ -19,5 +19,5 @@ class PressureButton: BaseButton {
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }

@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyBeaver
 import GradientView
+import ActionKit
 
 class ViewController: UIViewController {
     
@@ -17,12 +18,12 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UINavigationBar.appearance().tintColor = UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)
-        UIApplication.sharedApplication().keyWindow?.tintColor = UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)
+        UINavigationBar.appearance().tintColor = Manager.sharedManager.color
+        UIApplication.sharedApplication().keyWindow?.tintColor = Manager.sharedManager.color
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ViewController.reload))
         let bg = GradientView(frame: self.view.frame)
-        bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)]
+        bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
         reload()
@@ -30,7 +31,7 @@ class ViewController: UIViewController {
     
     func reload() {
         do {
-            let data = try ConnectionManager.sharedManager.getLatestData()
+            let data = try Manager.sharedManager.getLatestData()
             self.data = data
             setupViews(data)
         } catch let e {
@@ -46,9 +47,6 @@ class ViewController: UIViewController {
     }
     
     func setupViews(data: Data) {
-        guard let temp = data.temperature else { log.error("no temperature found on \(data)"); return }
-        guard let press = data.pressure else { log.error("no pressure found on \(data)"); return }
-        guard let humid = data.humidity else { log.error("no humidity found on \(data)"); return }
         
         // general
         let margin = self.view.frame.width / 20
@@ -66,9 +64,18 @@ class ViewController: UIViewController {
         }
         
         // setup buttons
-        let temperatureButton = TemperatureButton(temp: temp, frame: CGRectMake(margin, yOff + margin, width, height))
-        let pressureButton = PressureButton(pressure: press, frame: CGRectMake(self.view.center.x + margin, yOff + margin, width, height))
-        let humidityButton = HumidityButton(humidity: humid, frame: CGRectMake(margin, yOff + self.view.center.x + margin * 3, width, height))
+        let temperatureButton = TemperatureButton(temp: data.temperature, frame: CGRectMake(margin, yOff + margin, width, height), closure: {
+            log.verbose("Temperature tapped")
+            self.performSegueWithIdentifier("showTemperature", sender: self)
+        })
+        let pressureButton = PressureButton(pressure: data.pressure, frame: CGRectMake(self.view.center.x + margin, yOff + margin, width, height), closure: {
+            log.verbose("pressure tapped")
+            self.performSegueWithIdentifier("showPressure", sender: self)
+        })
+        let humidityButton = HumidityButton(humidity: data.humidity, frame: CGRectMake(margin, yOff + self.view.center.x + margin * 3, width, height), closure: {
+            log.verbose("Humidity tapped")
+            self.performSegueWithIdentifier("showHumidity", sender: self)
+        })
         //let temperatureButton = TemperatureButton(temp: temp, frame: CGRectMake(0,0,self.view.frame.width / 2,self.view.frame.width / 2))
         
         [temperatureButton, pressureButton, humidityButton].forEach {
@@ -82,7 +89,31 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        
+        if segue.identifier == "showTemperature" {
+            if let dest = segue.destinationViewController as? TemperatureViewController {
+                do {
+                    dest.dataSet = try Manager.sharedManager.getAllData()
+                } catch let e {
+                    log.error("An error occurred: \(e)")
+                }
+            }
+        } else if segue.identifier == "showPressure" {
+            if let dest = segue.destinationViewController as? PressureViewController {
+                do {
+                    dest.dataSet = try Manager.sharedManager.getAllData()
+                } catch let e {
+                    log.error("An error occurred: \(e)")
+                }
+            }
+        } else if segue.identifier == "showHumidity" {
+            if let dest = segue.destinationViewController as? HumidityViewController {
+                do {
+                    dest.dataSet = try Manager.sharedManager.getAllData()
+                } catch let e {
+                    log.error("An error occurred: \(e)")
+                }
+            }
+        }
     }
     
     override func didReceiveMemoryWarning() {

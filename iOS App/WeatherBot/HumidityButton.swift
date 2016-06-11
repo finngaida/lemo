@@ -10,8 +10,8 @@ import UIKit
 
 class HumidityButton: BaseButton {
 
-    init(humidity: Double, frame: CGRect) {
-        super.init(frame: frame)
+    init(humidity: Double, frame: CGRect, closure: () -> ()) {
+        super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "humidity")
         self.label?.text = "\(humidity) %"
     }

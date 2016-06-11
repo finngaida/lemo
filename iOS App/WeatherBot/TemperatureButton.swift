@@ -10,8 +10,8 @@ import UIKit
 
 class TemperatureButton: BaseButton {
     
-    init(temp: Double, frame: CGRect) {
-        super.init(frame: frame)
+    init(temp: Double, frame: CGRect, closure: () -> ()) {
+        super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "temperature")
         self.label?.text = "\(temp) °C"
     }

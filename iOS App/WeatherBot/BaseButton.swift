@@ -15,9 +15,10 @@ class BaseButton: UIButton {
     var origFrame = CGRectZero
     var origImageFrame = CGRectZero
     var origLabelFrame = CGRectZero
+    var closure:(() -> ())?
     let touchDownMargin:CGFloat = 10
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, closure: () -> ()) {
         super.init(frame: frame)
         self.origFrame = frame
         
@@ -26,6 +27,8 @@ class BaseButton: UIButton {
         self.layer.borderWidth = touchDownMargin / 3
         self.layer.cornerRadius = self.frame.width / 10
         self.autoresizesSubviews = true
+        self.addControlEvent(.TouchUpInside, closure: closure)
+        self.closure = closure
         
         image = UIImageView(frame: CGRectMake(touchDownMargin * 2, touchDownMargin, self.frame.width - touchDownMargin * 4, self.frame.width - touchDownMargin * 4))
         image?.layer.masksToBounds = true
@@ -46,8 +49,8 @@ class BaseButton: UIButton {
     func animate(small:Bool) {
         UIView.animateWithDuration(0.2, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: [], animations: {
             self.frame = small ? CGRectMake(self.origFrame.origin.x + self.touchDownMargin, self.origFrame.origin.y + self.touchDownMargin, self.origFrame.width - self.touchDownMargin * 2, self.origFrame.height - self.touchDownMargin * 2) : self.origFrame
-            self.image?.frame = small ? CGRectMake(self.image!.frame.origin.x, self.image!.frame.origin.y - self.touchDownMargin, self.image!.frame.width - self.touchDownMargin * 2, self.image!.frame.height - self.touchDownMargin * 1.2) : self.origImageFrame
-            self.label?.frame = small ? CGRectMake(self.label!.frame.origin.x, self.label!.frame.origin.y - self.touchDownMargin, self.label!.frame.width - self.touchDownMargin * 2, self.label!.frame.height) : self.origLabelFrame
+            self.image?.frame = small ? CGRectMake(self.image!.frame.origin.x, self.image!.frame.origin.y, self.image!.frame.width - self.touchDownMargin * 2, self.image!.frame.height - self.touchDownMargin * 2.4) : self.origImageFrame
+            self.label?.alpha = small ? 0 : 1
             }, completion: nil)
     }
     
@@ -69,6 +72,12 @@ class BaseButton: UIButton {
     
     override func touchesEnded(touches: Set<UITouch>, withEvent event: UIEvent?) {
         animate(false)
+        
+        guard let p = touches.first?.locationInView(self) else { return }
+        let inside = p.x > 0 && p.x < origFrame.width && p.y > 0 && p.y < origFrame.height
+        if inside, let c = self.closure {
+            c()
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {

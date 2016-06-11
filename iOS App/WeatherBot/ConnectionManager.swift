@@ -8,6 +8,7 @@
 
 import Foundation
 import CoreLocation
+import UIKit
 
 let root = "http://172.16.110.45:2101/Weather/"
 
@@ -15,11 +16,27 @@ enum Status {
     case Success, Error(reason: String)
 }
 
-class ConnectionManager: NSObject {
+class Manager: NSObject {
     
-    static let sharedManager = ConnectionManager()
+    static let sharedManager = Manager()
     var availableServers:[Server]?
     var data:DataSet?
+    let color = UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)
+    
+    func xLabelsFromSet(set:DataSet) -> [String] {
+        return set.data.map({ (data) -> String in
+            let d = NSDateFormatter()
+            d.dateFormat = "HH:mm"
+            return d.stringFromDate(data.timestamp)
+        })
+    }
+    
+    func dataArrayFromSet(set:DataSet, filteredCapability:Capability) -> [Double] {
+        return set.data.map({ (data) -> Double in
+            let capabilities:[Capability] = [.Temperature, .Humidity, .Pressure]
+            return [data.temperature, data.pressure, data.humidity][capabilities.indexOf(filteredCapability) ?? 0]
+        })
+    }
     
     func getLatestData() throws -> Data {
         log.verbose("Starting to get data")
@@ -109,37 +126,27 @@ struct DataSet {
 
 struct Data {
     var pk:Int
-    var temperature:Double?
-    var pressure:Double?
-    var humidity:Double?
+    var temperature:Double
+    var pressure:Double
+    var humidity:Double
     var timestamp:NSDate
     
     static func fromDict(dict:Dictionary<String,AnyObject>) throws -> Data {
         log.verbose("attempting to convert dict: \(dict) into Data model")
         
-        guard let pk = dict["pk"] as? Int, fields = dict["fields"] as? Dictionary<String,AnyObject>, time = fields["timestamp"] as? Double else {
+        guard let pk = dict["pk"] as? Int, fields = dict["fields"] as? Dictionary<String,AnyObject> else {
+            let cause = "Couldn't unwrap fields from \(dict)"
+            log.error(cause)
+            throw E.Unwrap(cause: cause)
+        }
+        
+        guard let time = fields["timestamp"] as? Double, temp = fields["temp"] as? Double, pressure = fields["pressure"] as? Double, let humidity = fields["humidity"] as? Double else {
             let cause = "Couldn't unwrap \(dict)"
             log.error(cause)
             throw E.Unwrap(cause: cause)
         }
         
-        var data = Data(pk: pk, temperature: nil, pressure: nil, humidity: nil, timestamp: NSDate(timeIntervalSinceReferenceDate:time))
-        log.verbose("built half-empty data object: \(data)")
-        
-        if let temp = fields["temp"] as? Double {
-            log.verbose("adding temperature: \(temp)")
-            data.temperature = temp
-        }
-        
-        if let pressure = fields["pressure"] as? Double {
-            log.verbose("adding pressure: \(pressure)")
-            data.pressure = pressure
-        }
-        
-        if let humidity = fields["humidity"] as? Double {
-            log.verbose("adding humidity: \(humidity)")
-            data.humidity = humidity
-        }
+        let data = Data(pk: pk, temperature: temp, pressure: pressure, humidity: humidity, timestamp: NSDate(timeIntervalSinceReferenceDate:time))
         
         log.verbose("completed building data model: \(data)")
         return data

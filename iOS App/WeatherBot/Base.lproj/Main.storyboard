@@ -23,6 +23,60 @@
             </objects>
             <point key="canvasLocation" x="510" y="995"/>
         </scene>
+        <!--Temperature View Controller-->
+        <scene sceneID="LlV-tL-876">
+            <objects>
+                <viewController id="IAj-B3-KyZ" customClass="TemperatureViewController" customModule="Lemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xp9-hW-FiD"/>
+                        <viewControllerLayoutGuide type="bottom" id="x1T-NY-nad"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="s7u-BU-q2Y">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="e33-bL-7Kt" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="-79"/>
+        </scene>
+        <!--Pressure View Controller-->
+        <scene sceneID="QNR-Ih-cfO">
+            <objects>
+                <viewController id="Vg0-eu-lsQ" customClass="PressureViewController" customModule="Lemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="mQI-Wa-Xr8"/>
+                        <viewControllerLayoutGuide type="bottom" id="TdY-by-Bqj"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="To0-AS-a3h">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="mLn-e4-iEO" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="617"/>
+        </scene>
+        <!--Humidity View Controller-->
+        <scene sceneID="YK7-9f-FwN">
+            <objects>
+                <viewController id="DHq-ix-maV" customClass="HumidityViewController" customModule="Lemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="5D8-cH-kp4"/>
+                        <viewControllerLayoutGuide type="bottom" id="FqK-6m-y3Z"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uSP-fo-BSW">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vj1-Q0-wSG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2894" y="1300"/>
+        </scene>
         <!--Lemo-->
         <scene sceneID="iof-iN-Igm">
             <objects>
@@ -37,6 +91,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lemo" id="hdI-Fy-YYa"/>
+                    <connections>
+                        <segue destination="IAj-B3-KyZ" kind="show" identifier="showTemperature" id="xmY-xM-tah"/>
+                        <segue destination="Vg0-eu-lsQ" kind="show" identifier="showPressure" id="qzD-QJ-ihX"/>
+                        <segue destination="DHq-ix-maV" kind="show" identifier="showHumidity" id="EQ0-Mz-0m6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yKe-wA-19I" sceneMemberID="firstResponder"/>
             </objects>
@@ -46,7 +105,7 @@
         <scene sceneID="oHt-pL-ez7">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dZK-YV-KQf" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Lemo" image="outside" selectedImage="outside" id="i1d-CQ-AWl"/>
+                    <tabBarItem key="tabBarItem" title="Lemo" image="sun" selectedImage="outside" id="i1d-CQ-AWl"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Xix-Vn-sSX">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -61,7 +120,7 @@
             </objects>
             <point key="canvasLocation" x="1360" y="617"/>
         </scene>
-        <!--Settings-->
+        <!--Stationen-->
         <scene sceneID="RpH-dJ-IDG">
             <objects>
                 <viewController id="jKH-Zi-WBa" customClass="SettingsViewController" customModule="Lemo" customModuleProvider="target" sceneMemberID="viewController">
@@ -90,7 +149,7 @@
                             <constraint firstItem="i4r-LE-MYp" firstAttribute="top" secondItem="XpE-1q-MLP" secondAttribute="bottom" constant="150" id="enV-8h-l78"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="Settings" id="qPz-SO-xk2"/>
+                    <navigationItem key="navigationItem" title="Stationen" id="qPz-SO-xk2"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="aDD-m0-em3" sceneMemberID="firstResponder"/>
             </objects>
@@ -100,7 +159,7 @@
         <scene sceneID="5r8-IF-fWI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bS9-hI-Rkr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Einstellungen" image="sun" id="ZLE-d0-eNQ"/>
+                    <tabBarItem key="tabBarItem" title="Einstellungen" image="outside" id="ZLE-d0-eNQ"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="AQN-bg-Vrb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

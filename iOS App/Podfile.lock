@@ -1,18 +1,24 @@
 PODS:
   - ActionKit (1.0)
   - GradientView (2.1.0)
+  - PNChart (0.8.8):
+    - UICountingLabel (~> 1.2.0)
   - SwiftyBeaver (0.5.3)
+  - UICountingLabel (1.2.0)
 
 DEPENDENCIES:
   - ActionKit
   - GradientView
+  - PNChart
   - SwiftyBeaver
 
 SPEC CHECKSUMS:
   ActionKit: 6c45e3d92252dd34b18e7c3d8e9f811ee52558b1
   GradientView: 4a961b8e9e1787beaf6880b9fc2dd08c6345533d
+  PNChart: 25f91e9c4688af49c3647489760624d037f5383f
   SwiftyBeaver: 20afdb23012f8bcacb7e865880e90301bf70ad37
+  UICountingLabel: 1db4e7d023e1762171eb226d6dff47a7a84f27aa
 
-PODFILE CHECKSUM: 5fbb93e762de4876d7bae13ac9505607948d9aea
+PODFILE CHECKSUM: ab8e1b9ead6aefba66f625c591a2c1a9128b6b7f
 
 COCOAPODS: 1.0.0.beta.6
