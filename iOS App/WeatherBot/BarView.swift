@@ -19,11 +19,11 @@ public class BarView: ChartView {
     public override func setupChart() {
         chart = BarChartView(frame: CGRectMake(25, 85, self.frame.width - 40, self.frame.height - 110))
         chart?.delegate = self
-        chart?.setScaleEnabled(false)
-        chart?.dragEnabled = false
-        chart?.pinchZoomEnabled = false
-        chart?.drawGridBackgroundEnabled = false
-        chart?.leftAxis.enabled = false
+        chart?.setScaleEnabled(true)
+        chart?.dragEnabled = true
+        chart?.pinchZoomEnabled = true
+        chart?.drawGridBackgroundEnabled = true
+        chart?.leftAxis.enabled = true
         chart?.rightAxis.enabled = true
         chart?.legend.enabled = false
         chart?.descriptionText = ""
@@ -36,6 +36,10 @@ public class BarView: ChartView {
         chart?.xAxis.gridColor = UIColor(white: 1.0, alpha: 0.3)
         chart?.rightAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.rightAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
+        chart?.leftAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
+        chart?.leftAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
+        
+        chart?.gridBackgroundColor = UIColor.clearColor()
         
         chart?.backgroundColor = UIColor.clearColor()
         chart?.layer.masksToBounds

@@ -13,7 +13,9 @@ class TemperatureButton: BaseButton {
     init(temp: Double, frame: CGRect, closure: () -> ()) {
         super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "temperature")
-        self.label?.text = "\(temp) °C"
+        
+        let t = String(format: "%.2f", temp)
+        self.label?.text = "\(t) °C"
     }
     
     required init?(coder aDecoder: NSCoder) {

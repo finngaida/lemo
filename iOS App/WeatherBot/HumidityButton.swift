@@ -9,15 +9,17 @@
 import UIKit
 
 class HumidityButton: BaseButton {
-
+    
     init(humidity: Double, frame: CGRect, closure: () -> ()) {
         super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "humidity")
-        self.label?.text = "\(humidity) %"
+        
+        let h = String(format: "%.1f", humidity)
+        self.label?.text = "\(h) %"
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
+    
 }
