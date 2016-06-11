@@ -1,0 +1,15 @@
+PODS:
+  - ActionKit (1.0)
+  - SwiftyBeaver (0.5.3)
+
+DEPENDENCIES:
+  - ActionKit
+  - SwiftyBeaver
+
+SPEC CHECKSUMS:
+  ActionKit: 6c45e3d92252dd34b18e7c3d8e9f811ee52558b1
+  SwiftyBeaver: 20afdb23012f8bcacb7e865880e90301bf70ad37
+
+PODFILE CHECKSUM: 98e457a0abeea1321a830df397ae3b6c9c1579bc
+
+COCOAPODS: 1.0.0.beta.6

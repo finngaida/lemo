@@ -49,6 +49,10 @@ struct Server {
     var ip:String
     var connected:Bool
     var capabilities:[Capability]
+    
+    var getValues:Bool {
+        return false
+    }
 }
 
 enum Capability {

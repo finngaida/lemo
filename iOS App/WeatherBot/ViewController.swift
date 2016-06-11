@@ -14,13 +14,15 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+    }
+    
+    override func viewDidAppear(animated: Bool) {
         if ConnectionManager.sharedManager.isConnectedToServer() {
-            
+            ConnectionManager.sharedManager.server?.getValues
         } else {
             log.debug("No server connected, showing dialog")
             self.tabBarController?.selectedIndex = 0
         }
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
