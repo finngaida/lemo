@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C52445AC1D0C826C00C75809 /* PaintcodeHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52445AB1D0C826C00C75809 /* PaintcodeHelper.swift */; };
 		C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */; };
 		C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88901D0BF58D00FFAE10 /* ViewController.swift */; };
 		C56F88941D0BF58D00FFAE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56F88921D0BF58D00FFAE10 /* Main.storyboard */; };
@@ -27,6 +28,7 @@
 		1B5A33C6B82AAE0E24EE66AC /* Pods_Lemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Lemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4F80DBCD92E22E72703E91C1 /* Pods-Lemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Lemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Lemo/Pods-Lemo.release.xcconfig"; sourceTree = "<group>"; };
 		4FB8F5B6C76C839577256B97 /* Pods-WeatherBot.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherBot.debug.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherBot/Pods-WeatherBot.debug.xcconfig"; sourceTree = "<group>"; };
+		C52445AB1D0C826C00C75809 /* PaintcodeHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PaintcodeHelper.swift; sourceTree = "<group>"; };
 		C56F888B1D0BF58D00FFAE10 /* Lemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56F88901D0BF58D00FFAE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */,
 				C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */,
 				C56F88A01D0C136300FFAE10 /* ConnectionManager.swift */,
+				C52445AB1D0C826C00C75809 /* PaintcodeHelper.swift */,
 				C56F88921D0BF58D00FFAE10 /* Main.storyboard */,
 				C56F88951D0BF58D00FFAE10 /* Assets.xcassets */,
 				C56F88971D0BF58D00FFAE10 /* LaunchScreen.storyboard */,
@@ -239,6 +242,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */,
+				C52445AC1D0C826C00C75809 /* PaintcodeHelper.swift in Sources */,
 				C5BC7ABF1D0C5EE3002855B8 /* HumidityButton.swift in Sources */,
 				C56F88A11D0C136300FFAE10 /* ConnectionManager.swift in Sources */,
 				C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */,

@@ -16,7 +16,7 @@ enum Status {
 }
 
 class ConnectionManager: NSObject {
-
+    
     static let sharedManager = ConnectionManager()
     var availableServers:[Server]?
     var data:DataSet?
@@ -31,7 +31,7 @@ class ConnectionManager: NSObject {
     func getData(forTimestamp:NSDate) throws -> Data {
         fatalError("Not yet implemented")
     }
-
+    
     func getAllData() throws -> DataSet {
         func fetchData() throws -> DataSet {
             log.verbose("fetching new data")
@@ -45,6 +45,8 @@ class ConnectionManager: NSObject {
             log.verbose("URL is \(url)")
             
             let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            log.verbose("got string from server: \(String(data: data, encoding: NSUTF8StringEncoding))")
+            
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
             
             log.verbose("got json: \(json)")
@@ -63,7 +65,7 @@ class ConnectionManager: NSObject {
             self.data = dataset
             return dataset
         }
-            
+        
         if let d = data {
             log.verbose("found data already: \(d)")
             if NSDate().timeIntervalSinceDate(d.latestTimestamp) < 10 * 60 {
@@ -107,9 +109,9 @@ struct DataSet {
 
 struct Data {
     var pk:Int
-    var temperature:Float?
-    var pressure:Float?
-    var humidity:Float?
+    var temperature:Double?
+    var pressure:Double?
+    var humidity:Double?
     var timestamp:NSDate
     
     static func fromDict(dict:Dictionary<String,AnyObject>) throws -> Data {
@@ -124,17 +126,17 @@ struct Data {
         var data = Data(pk: pk, temperature: nil, pressure: nil, humidity: nil, timestamp: NSDate(timeIntervalSinceReferenceDate:time))
         log.verbose("built half-empty data object: \(data)")
         
-        if let temp = fields["temp"] as? Float {
+        if let temp = fields["temp"] as? Double {
             log.verbose("adding temperature: \(temp)")
             data.temperature = temp
         }
         
-        if let pressure = fields["pressure"] as? Float {
+        if let pressure = fields["pressure"] as? Double {
             log.verbose("adding pressure: \(pressure)")
             data.pressure = pressure
         }
         
-        if let humidity = fields["humidity"] as? Float {
+        if let humidity = fields["humidity"] as? Double {
             log.verbose("adding humidity: \(humidity)")
             data.humidity = humidity
         }
