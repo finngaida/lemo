@@ -21,7 +21,7 @@ class ViewController: UIViewController {
             ConnectionManager.sharedManager.server?.getValues
         } else {
             log.debug("No server connected, showing dialog")
-            self.tabBarController?.selectedIndex = 0
+            self.tabBarController?.selectedIndex = 0 
         }
     }
     
