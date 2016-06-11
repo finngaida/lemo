@@ -6,5 +6,6 @@
 target 'Lemo' do
 pod 'ActionKit'
 pod 'SwiftyBeaver'
+pod 'GradientView'
 end
 

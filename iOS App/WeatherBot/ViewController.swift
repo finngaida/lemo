@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyBeaver
+import GradientView
 
 class ViewController: UIViewController {
     
@@ -17,6 +18,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ViewController.reload))
+        let bg = GradientView(frame: self.view.frame)
+        bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)]
+        self.view.addSubview(bg)
+        
         reload()
     }
     

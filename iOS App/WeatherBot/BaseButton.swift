@@ -19,6 +19,10 @@ class BaseButton: UIButton {
         super.init(frame: frame)
         self.origFrame = frame
         
+        self.layer.masksToBounds = true
+        self.layer.borderColor = UIColor.whiteColor().CGColor
+        self.layer.borderWidth = touchDownMargin / 2
+        
         image = UIImageView(frame: CGRectMake(touchDownMargin * 2, touchDownMargin, self.frame.width - touchDownMargin * 4, self.frame.height - touchDownMargin * 4))
         image?.layer.masksToBounds = true
         image?.layer.cornerRadius = image!.frame.width / 2

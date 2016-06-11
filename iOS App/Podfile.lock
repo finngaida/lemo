@@ -1,15 +1,18 @@
 PODS:
   - ActionKit (1.0)
+  - GradientView (2.1.0)
   - SwiftyBeaver (0.5.3)
 
 DEPENDENCIES:
   - ActionKit
+  - GradientView
   - SwiftyBeaver
 
 SPEC CHECKSUMS:
   ActionKit: 6c45e3d92252dd34b18e7c3d8e9f811ee52558b1
+  GradientView: 4a961b8e9e1787beaf6880b9fc2dd08c6345533d
   SwiftyBeaver: 20afdb23012f8bcacb7e865880e90301bf70ad37
 
-PODFILE CHECKSUM: f73d1aeb365600c9d0f2fae9e16f54361e978e31
+PODFILE CHECKSUM: 5fbb93e762de4876d7bae13ac9505607948d9aea
 
 COCOAPODS: 1.0.0.beta.6
