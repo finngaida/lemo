@@ -17,6 +17,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ViewController.reload))
+        reload()
     }
     
     func reload() {
@@ -32,9 +33,10 @@ class ViewController: UIViewController {
         }
         
         self.data = data
+        setupViews(data)
     }
     
-    func setupViews() {
+    func setupViews(data: Data) {
         
     }
     

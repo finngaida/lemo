@@ -15,6 +15,10 @@
 		C56F88A11D0C136300FFAE10 /* ConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88A01D0C136300FFAE10 /* ConnectionManager.swift */; };
 		C56F88A31D0C174900FFAE10 /* ServersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88A21D0C174900FFAE10 /* ServersViewController.swift */; };
 		C56F88A51D0C176100FFAE10 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88A41D0C176100FFAE10 /* SettingsViewController.swift */; };
+		C5BC7AB91D0C5B77002855B8 /* BaseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BC7AB81D0C5B77002855B8 /* BaseButton.swift */; };
+		C5BC7ABB1D0C5E0F002855B8 /* TemperatureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BC7ABA1D0C5E0F002855B8 /* TemperatureButton.swift */; };
+		C5BC7ABD1D0C5EB6002855B8 /* PressureButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */; };
+		C5BC7ABF1D0C5EE3002855B8 /* HumidityButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */; };
 		D55D2D8D0B5E018655406DBB /* Pods_Lemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B5A33C6B82AAE0E24EE66AC /* Pods_Lemo.framework */; };
 /* End PBXBuildFile section */
 
@@ -33,6 +37,10 @@
 		C56F88A01D0C136300FFAE10 /* ConnectionManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectionManager.swift; sourceTree = "<group>"; };
 		C56F88A21D0C174900FFAE10 /* ServersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServersViewController.swift; sourceTree = "<group>"; };
 		C56F88A41D0C176100FFAE10 /* SettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		C5BC7AB81D0C5B77002855B8 /* BaseButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseButton.swift; sourceTree = "<group>"; };
+		C5BC7ABA1D0C5E0F002855B8 /* TemperatureButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TemperatureButton.swift; sourceTree = "<group>"; };
+		C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureButton.swift; sourceTree = "<group>"; };
+		C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityButton.swift; sourceTree = "<group>"; };
 		CA6D415159F2EBC36DF6DF20 /* Pods-WeatherBot.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherBot.release.xcconfig"; path = "Pods/Target Support Files/Pods-WeatherBot/Pods-WeatherBot.release.xcconfig"; sourceTree = "<group>"; };
 		E225971BBBCC71A40CD5703C /* Pods_WeatherBot.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherBot.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -94,6 +102,10 @@
 				C56F88901D0BF58D00FFAE10 /* ViewController.swift */,
 				C56F88A21D0C174900FFAE10 /* ServersViewController.swift */,
 				C56F88A41D0C176100FFAE10 /* SettingsViewController.swift */,
+				C5BC7AB81D0C5B77002855B8 /* BaseButton.swift */,
+				C5BC7ABA1D0C5E0F002855B8 /* TemperatureButton.swift */,
+				C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */,
+				C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */,
 				C56F88A01D0C136300FFAE10 /* ConnectionManager.swift */,
 				C56F88921D0BF58D00FFAE10 /* Main.storyboard */,
 				C56F88951D0BF58D00FFAE10 /* Assets.xcassets */,
@@ -227,10 +239,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */,
+				C5BC7ABF1D0C5EE3002855B8 /* HumidityButton.swift in Sources */,
 				C56F88A11D0C136300FFAE10 /* ConnectionManager.swift in Sources */,
 				C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */,
 				C56F88A51D0C176100FFAE10 /* SettingsViewController.swift in Sources */,
+				C5BC7ABD1D0C5EB6002855B8 /* PressureButton.swift in Sources */,
+				C5BC7AB91D0C5B77002855B8 /* BaseButton.swift in Sources */,
 				C56F88A31D0C174900FFAE10 /* ServersViewController.swift in Sources */,
+				C5BC7ABB1D0C5E0F002855B8 /* TemperatureButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
