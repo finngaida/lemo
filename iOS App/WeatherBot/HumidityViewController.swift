@@ -17,14 +17,10 @@ class HumidityViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = "Luftfeuchtigkeit"
+        self.title = "Graph"
         
-        // Do any additional setup after loading the view.
-        chart = PNBarChart(frame: CGRectMake(0, 66, self.view.frame.width, self.view.frame.width))
-        chart.xLabels = Manager.sharedManager.xLabelsFromSet(dataSet)
-        chart.yValues = Manager.sharedManager.dataArrayFromSet(dataSet, filteredCapability: .Humidity)
-        chart.strokeChart()
-        
+        let chart = HumidityView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
+        chart.setDataSet(dataSet.data.map({ $0.humidity }))
         self.view.addSubview(chart)
     }
     

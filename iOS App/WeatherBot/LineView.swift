@@ -56,10 +56,10 @@ public class LineView: ChartView {
         dateLabel?.text = self.dateText ?? "Today, 8:18"
     }
     
-    public override func setData(data:Array<HealthObject>) {
+    public override func setDataSet(data:Array<Double>) {
         self.data = data
         
-        let yVals = data.enumerate().map({ChartDataEntry(value: Double(self.majorValueFromHealthObject($1)) ?? 0, xIndex: $0)})
+        let yVals = data.enumerate().map({ChartDataEntry(value: $1, xIndex: $0)})
         let set = LineChartDataSet(yVals: yVals, label: "")
         set.lineWidth = 2
         set.circleRadius = 5

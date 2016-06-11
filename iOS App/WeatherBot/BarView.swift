@@ -53,9 +53,9 @@ public class BarView: ChartView {
         dateLabel?.text = self.dateText ?? "Yesterday, 6:24 AM"
     }
     
-    public override func setData(data:Array<HealthObject>) {
+    public override func setDataSet(data:Array<Double>) {
         
-        let yVals = data.enumerate().map({BarChartDataEntry(value: Double(self.majorValueFromHealthObject($1)) ?? 0, xIndex: $0)})
+        let yVals = data.enumerate().map({BarChartDataEntry(value: $1, xIndex: $0)})
         let set = BarChartDataSet(yVals: yVals, label: "")
         set.drawValuesEnabled = false
         set.highlightEnabled = false

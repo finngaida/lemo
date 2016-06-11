@@ -61,7 +61,8 @@ class Manager: NSObject {
             
             log.verbose("URL is \(url)")
             
-            let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            //let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             log.verbose("got string from server: \(String(data: data, encoding: NSUTF8StringEncoding))")
             
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
@@ -124,7 +125,7 @@ struct DataSet {
     }
 }
 
-struct Data {
+public struct Data {
     var pk:Int
     var temperature:Double
     var pressure:Double

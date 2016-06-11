@@ -11,7 +11,7 @@ import Charts
 
 public class ChartView: UIView, ChartViewDelegate {
     
-    public var data:Array<HealthObject>? {
+    public var data:Array<Double>? {
         didSet {
             self.reload()
         }
@@ -78,7 +78,7 @@ public class ChartView: UIView, ChartViewDelegate {
     public func setupLabels() {
         
         // upper labels
-        titleLabel = UILabel(frame: CGRectMake(20, 10, self.frame.width / 2 - 30, 30))
+        titleLabel = UILabel(frame: CGRectMake(20, 10, self.frame.width / 2 + 30, 30))
         todayLabel = UILabel(frame: CGRectMake(self.frame.width / 2 + 10, 10, self.frame.width / 2 - 30, 30))
         todayLabel?.textAlignment = .Right
         
@@ -101,7 +101,7 @@ public class ChartView: UIView, ChartViewDelegate {
         
     }
     
-    public func setData(data:Array<HealthObject>) {
+    public func setDataSet(data:Array<Double>) {
         
     }
     

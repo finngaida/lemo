@@ -19,6 +19,8 @@
 		C52445C11D0CC3FD00C75809 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52445C01D0CC3FD00C75809 /* Helper.swift */; };
 		C52445C31D0CC60B00C75809 /* Loader.swift in Sources */ = {isa = PBXBuildFile; fileRef = C52445C21D0CC60B00C75809 /* Loader.swift */; };
 		C52445C51D0CCD1200C75809 /* demo.json in Resources */ = {isa = PBXBuildFile; fileRef = C52445C41D0CCD1200C75809 /* demo.json */; };
+		C537D2261D0CD2660001CD8A /* PressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2251D0CD2660001CD8A /* PressureView.swift */; };
+		C537D2281D0CD26E0001CD8A /* HumidityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2271D0CD26E0001CD8A /* HumidityView.swift */; };
 		C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */; };
 		C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88901D0BF58D00FFAE10 /* ViewController.swift */; };
 		C56F88941D0BF58D00FFAE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56F88921D0BF58D00FFAE10 /* Main.storyboard */; };
@@ -51,6 +53,8 @@
 		C52445C01D0CC3FD00C75809 /* Helper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
 		C52445C21D0CC60B00C75809 /* Loader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Loader.swift; sourceTree = "<group>"; };
 		C52445C41D0CCD1200C75809 /* demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo.json; sourceTree = SOURCE_ROOT; };
+		C537D2251D0CD2660001CD8A /* PressureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureView.swift; sourceTree = "<group>"; };
+		C537D2271D0CD26E0001CD8A /* HumidityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityView.swift; sourceTree = "<group>"; };
 		C56F888B1D0BF58D00FFAE10 /* Lemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56F88901D0BF58D00FFAE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +105,56 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		C537D2211D0CCFC90001CD8A /* Overhead */ = {
+			isa = PBXGroup;
+			children = (
+				C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */,
+				C56F88A01D0C136300FFAE10 /* ConnectionManager.swift */,
+				C52445AB1D0C826C00C75809 /* PaintcodeHelper.swift */,
+				C52445BE1D0CC3DE00C75809 /* Model.swift */,
+				C52445C01D0CC3FD00C75809 /* Helper.swift */,
+				C52445C21D0CC60B00C75809 /* Loader.swift */,
+			);
+			name = Overhead;
+			sourceTree = "<group>";
+		};
+		C537D2221D0CCFD30001CD8A /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				C52445B31D0CC01B00C75809 /* BarView.swift */,
+				C52445B41D0CC01B00C75809 /* ChartView.swift */,
+				C52445B51D0CC01B00C75809 /* LineView.swift */,
+				C52445BC1D0CC37A00C75809 /* TemperatureView.swift */,
+				C537D2251D0CD2660001CD8A /* PressureView.swift */,
+				C537D2271D0CD26E0001CD8A /* HumidityView.swift */,
+			);
+			name = Charts;
+			sourceTree = "<group>";
+		};
+		C537D2231D0CCFDE0001CD8A /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				C56F88901D0BF58D00FFAE10 /* ViewController.swift */,
+				C56F88A21D0C174900FFAE10 /* ServersViewController.swift */,
+				C56F88A41D0C176100FFAE10 /* SettingsViewController.swift */,
+				C52445AD1D0C9BFD00C75809 /* TemperatureViewController.swift */,
+				C52445AF1D0CB8FC00C75809 /* PressureViewController.swift */,
+				C52445B11D0CB90300C75809 /* HumidityViewController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		C537D2241D0CCFE80001CD8A /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				C5BC7AB81D0C5B77002855B8 /* BaseButton.swift */,
+				C5BC7ABA1D0C5E0F002855B8 /* TemperatureButton.swift */,
+				C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */,
+				C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
 		C56F88821D0BF58D00FFAE10 = {
 			isa = PBXGroup;
 			children = (
@@ -122,26 +176,10 @@
 		C56F888D1D0BF58D00FFAE10 /* Lemo */ = {
 			isa = PBXGroup;
 			children = (
-				C52445BE1D0CC3DE00C75809 /* Model.swift */,
-				C52445C01D0CC3FD00C75809 /* Helper.swift */,
-				C52445C21D0CC60B00C75809 /* Loader.swift */,
-				C52445B31D0CC01B00C75809 /* BarView.swift */,
-				C52445BC1D0CC37A00C75809 /* TemperatureView.swift */,
-				C52445B41D0CC01B00C75809 /* ChartView.swift */,
-				C52445B51D0CC01B00C75809 /* LineView.swift */,
-				C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */,
-				C56F88901D0BF58D00FFAE10 /* ViewController.swift */,
-				C56F88A21D0C174900FFAE10 /* ServersViewController.swift */,
-				C56F88A41D0C176100FFAE10 /* SettingsViewController.swift */,
-				C52445AD1D0C9BFD00C75809 /* TemperatureViewController.swift */,
-				C52445AF1D0CB8FC00C75809 /* PressureViewController.swift */,
-				C52445B11D0CB90300C75809 /* HumidityViewController.swift */,
-				C5BC7AB81D0C5B77002855B8 /* BaseButton.swift */,
-				C5BC7ABA1D0C5E0F002855B8 /* TemperatureButton.swift */,
-				C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */,
-				C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */,
-				C56F88A01D0C136300FFAE10 /* ConnectionManager.swift */,
-				C52445AB1D0C826C00C75809 /* PaintcodeHelper.swift */,
+				C537D2211D0CCFC90001CD8A /* Overhead */,
+				C537D2221D0CCFD30001CD8A /* Charts */,
+				C537D2231D0CCFDE0001CD8A /* Controllers */,
+				C537D2241D0CCFE80001CD8A /* Buttons */,
 				C56F88921D0BF58D00FFAE10 /* Main.storyboard */,
 				C56F88951D0BF58D00FFAE10 /* Assets.xcassets */,
 				C56F88971D0BF58D00FFAE10 /* LaunchScreen.storyboard */,
@@ -275,6 +313,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C537D2261D0CD2660001CD8A /* PressureView.swift in Sources */,
 				C52445B61D0CC01B00C75809 /* BarView.swift in Sources */,
 				C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */,
 				C52445AC1D0C826C00C75809 /* PaintcodeHelper.swift in Sources */,
@@ -287,6 +326,7 @@
 				C5BC7ABD1D0C5EB6002855B8 /* PressureButton.swift in Sources */,
 				C52445BF1D0CC3DE00C75809 /* Model.swift in Sources */,
 				C52445B71D0CC01B00C75809 /* ChartView.swift in Sources */,
+				C537D2281D0CD26E0001CD8A /* HumidityView.swift in Sources */,
 				C5BC7AB91D0C5B77002855B8 /* BaseButton.swift in Sources */,
 				C52445AE1D0C9BFD00C75809 /* TemperatureViewController.swift in Sources */,
 				C52445C31D0CC60B00C75809 /* Loader.swift in Sources */,
