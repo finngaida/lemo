@@ -11,30 +11,46 @@ import SwiftyBeaver
 
 class ViewController: UIViewController {
     
+    var data:Data?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ViewController.reload))
+    }
+    
+    func reload() {
+        guard let data = try? ConnectionManager.sharedManager.getLatestData() else {
+            print("An error occurred while unwrapping latest data")
+            let alert = UIAlertController(title: "Oh nein!", message: "Es gab einen Fehler beim Laden der Daten, bitte versichere dich, dass mindestens eine Wetterstation online ist und versuche es dann nochmal!", preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: "Erneut versuchen", style: .Default, handler: { (action) in
+                self.reload()
+            }))
+            alert.addAction(UIAlertAction(title: "Schließen", style: .Default, handler: nil))
+            self.presentViewController(alert, animated: true, completion: nil)
+            return
+        }
+        
+        self.data = data
+    }
+    
+    func setupViews() {
         
     }
     
     override func viewDidAppear(animated: Bool) {
-        if ConnectionManager.sharedManager.isConnectedToServer() {
-            ConnectionManager.sharedManager.server?.getValues
-        } else {
-            log.debug("No server connected, showing dialog")
-            self.tabBarController?.selectedIndex = 0
-            // Hallo
-        }
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
-
+    
+    
 }
 
