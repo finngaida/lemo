@@ -18,9 +18,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        UINavigationBar.appearance().tintColor = Manager.sharedManager.color
-        UIApplication.sharedApplication().keyWindow?.tintColor = Manager.sharedManager.color
-        
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ViewController.reload))
         let bg = GradientView(frame: self.view.frame)
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
