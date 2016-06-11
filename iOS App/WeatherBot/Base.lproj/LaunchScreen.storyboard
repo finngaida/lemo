@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8150" systemVersion="15A204g" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8122"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
@@ -15,8 +17,27 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gradient" translatesAutoresizingMaskIntoConstraints="NO" id="SDH-ID-Rsf">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="startsun" translatesAutoresizingMaskIntoConstraints="NO" id="zEv-5O-vbp">
+                                <rect key="frame" x="200" y="170" width="200" height="200"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="BDZ-Lt-gPX"/>
+                                    <constraint firstAttribute="height" constant="200" id="XnG-1p-gFc"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="SDH-ID-Rsf" secondAttribute="bottom" id="D2H-9e-2ed"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="SDH-ID-Rsf" secondAttribute="trailing" constant="-20" id="QCt-lZ-WNh"/>
+                            <constraint firstItem="zEv-5O-vbp" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="V7a-mm-vkP"/>
+                            <constraint firstItem="SDH-ID-Rsf" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-20" id="Xgi-PQ-YgH"/>
+                            <constraint firstItem="SDH-ID-Rsf" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="topMargin" id="r05-55-a3w"/>
+                            <constraint firstItem="zEv-5O-vbp" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="150" id="ylj-wb-T91"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -24,4 +45,8 @@
             <point key="canvasLocation" x="53" y="375"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="gradient" width="5" height="667"/>
+        <image name="startsun" width="150" height="150"/>
+    </resources>
 </document>
