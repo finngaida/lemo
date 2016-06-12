@@ -23,6 +23,7 @@
 		C537D2281D0CD26E0001CD8A /* HumidityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2271D0CD26E0001CD8A /* HumidityView.swift */; };
 		C537D22A1D0CEB3E0001CD8A /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2291D0CEB3E0001CD8A /* MoreButton.swift */; };
 		C537D22C1D0D02DC0001CD8A /* demostations.json in Resources */ = {isa = PBXBuildFile; fileRef = C537D22B1D0D02DC0001CD8A /* demostations.json */; };
+		C537D2301D0D31C60001CD8A /* StationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D22F1D0D31C60001CD8A /* StationCell.swift */; };
 		C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */; };
 		C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88901D0BF58D00FFAE10 /* ViewController.swift */; };
 		C56F88941D0BF58D00FFAE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56F88921D0BF58D00FFAE10 /* Main.storyboard */; };
@@ -59,6 +60,7 @@
 		C537D2271D0CD26E0001CD8A /* HumidityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityView.swift; sourceTree = "<group>"; };
 		C537D2291D0CEB3E0001CD8A /* MoreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
 		C537D22B1D0D02DC0001CD8A /* demostations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demostations.json; sourceTree = SOURCE_ROOT; };
+		C537D22F1D0D31C60001CD8A /* StationCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StationCell.swift; sourceTree = "<group>"; };
 		C56F888B1D0BF58D00FFAE10 /* Lemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56F88901D0BF58D00FFAE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -186,6 +188,7 @@
 				C537D2231D0CCFDE0001CD8A /* Controllers */,
 				C537D2241D0CCFE80001CD8A /* Buttons */,
 				C56F88921D0BF58D00FFAE10 /* Main.storyboard */,
+				C537D22F1D0D31C60001CD8A /* StationCell.swift */,
 				C56F88951D0BF58D00FFAE10 /* Assets.xcassets */,
 				C56F88971D0BF58D00FFAE10 /* LaunchScreen.storyboard */,
 				C56F889A1D0BF58D00FFAE10 /* Info.plist */,
@@ -334,6 +337,7 @@
 				C52445BF1D0CC3DE00C75809 /* Model.swift in Sources */,
 				C52445B71D0CC01B00C75809 /* ChartView.swift in Sources */,
 				C537D2281D0CD26E0001CD8A /* HumidityView.swift in Sources */,
+				C537D2301D0D31C60001CD8A /* StationCell.swift in Sources */,
 				C5BC7AB91D0C5B77002855B8 /* BaseButton.swift in Sources */,
 				C52445AE1D0C9BFD00C75809 /* TemperatureViewController.swift in Sources */,
 				C52445C31D0CC60B00C75809 /* Loader.swift in Sources */,
@@ -469,15 +473,11 @@
 					"-framework",
 					"\"GradientView\"",
 					"-framework",
-					"\"PNChart\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
 					"-framework",
 					"\"SwiftyBeaver\"",
-					"-framework",
-					"\"UICountingLabel\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.finngaida.Lemo;
 				PRODUCT_NAME = Lemo;
@@ -502,15 +502,11 @@
 					"-framework",
 					"\"GradientView\"",
 					"-framework",
-					"\"PNChart\"",
-					"-framework",
 					"\"Realm\"",
 					"-framework",
 					"\"RealmSwift\"",
 					"-framework",
 					"\"SwiftyBeaver\"",
-					"-framework",
-					"\"UICountingLabel\"",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = de.finngaida.Lemo;
 				PRODUCT_NAME = Lemo;

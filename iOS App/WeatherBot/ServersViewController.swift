@@ -26,7 +26,9 @@ class ServersViewController: UITableViewController {
         
         let bg = GradientView(frame: self.view.frame)
         bg.colors = [UIColor(red: 0.349, green: 0.780, blue: 0.980, alpha: 1.00), UIColor(red: 0.000, green: 0.392, blue: 0.992, alpha: 1.00)]
-        self.view.addSubview(bg)
+        self.view.insertSubview(bg, belowSubview: self.tableView)
+        self.tableView.backgroundColor = .clearColor()
+        self.tableView.separatorColor = .whiteColor()
         
         do {
             self.stations = try Manager.sharedManager.getAllStations()
@@ -53,7 +55,7 @@ class ServersViewController: UITableViewController {
     }
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .Default, reuseIdentifier: "Cell")
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! StationCell
         
         if let stations = stations {
             let station = stations[indexPath.row]
@@ -61,8 +63,6 @@ class ServersViewController: UITableViewController {
             cell.textLabel?.text = station.name
             cell.detailTextLabel?.text = station.capabilities.reduce("") { "\($0), \($1.self)" }
         }
-        
-        cell.accessoryType = .DisclosureIndicator
         
         return cell
     }
