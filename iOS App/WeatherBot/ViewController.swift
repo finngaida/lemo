@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var pressureButton:PressureButton?
     var humidityButton:HumidityButton?
     var moreButton:MoreButton?
+    var timer:NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,8 +28,15 @@ class ViewController: UIViewController {
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
-        let timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer.invalidate()
     }
     
     func reload() {

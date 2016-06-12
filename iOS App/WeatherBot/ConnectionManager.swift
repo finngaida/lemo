@@ -19,7 +19,7 @@ enum Status {
 class Manager: NSObject {
     
     static let sharedManager = Manager()
-    var availableServers:[Server]?
+    var availableStations:[Station]?
     var data:DataSet?
     var latestTimestamp:NSDate = NSDate()
     
@@ -38,6 +38,60 @@ class Manager: NSObject {
             let capabilities:[Capability] = [.Temperature, .Humidity, .Pressure]
             return [data.temperature, data.pressure, data.humidity][capabilities.indexOf(filteredCapability) ?? 0]
         })
+    }
+    
+    func getAllStations() throws -> [Station] {
+        func fetchStations() throws -> [Station] {
+            log.verbose("fetching stations")
+            
+            guard let url = NSURL(string: root + "stations") else {
+                let cause = "Couldn't get URL from \(root)stations"
+                log.error(cause)
+                throw E.Unwrap(cause: cause)
+            }
+            
+            log.verbose("URL is \(url)")
+            
+            //let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demostations", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
+            
+            let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
+            
+            log.verbose("got json"/*: \(json)"*/)
+            
+            guard let dict = json as? Array<Dictionary<String,AnyObject>> else {
+                let cause = "Couldn't convert \(json) to Dictionary"
+                log.error(cause)
+                throw E.Conversion(cause: cause)
+            }
+            
+            log.verbose("got dictionary"/*: \(dict)"*/)
+            
+            let stations = try dict.map { try Station.fromDict($0) }
+            log.verbose("returning dataset"/* \(dataset)"*/)
+            
+            self.availableStations = stations
+            return stations
+        }
+        
+        return try fetchStations()
+        
+        // TODO
+        //if let s = availableStations {
+        //log.verbose("found data already"/*: \(d)"*/)
+        
+        //if d.latestTimestamp == self.latestTimestamp {
+        //log.verbose("data is relevant enough, return cached data")
+        //return d
+        //} else {
+        //log.verbose("cached data is outdate, get new one")
+        //return try fetchData()
+        //}
+        //} else {
+        //log.verbose("no data cached, fetch new data")
+        //return try fetchData()
+        //}
     }
     
     func getLatestData() throws -> Data {
@@ -153,17 +207,38 @@ public struct Data {
         
         let data = Data(pk: pk, temperature: temp, pressure: pressure, humidity: humidity, timestamp: NSDate(timeIntervalSinceReferenceDate:time))
         
-        log.verbose("completed building data model: \(data)")
+        log.verbose("completed building data model"/*: \(data)"*/)
         return data
     }
 }
 
-struct Server {
+struct Station {
     var name:String
     var indoors:Bool
     var pk:Int
     var location:CLLocationCoordinate2D
     var capabilities:[Capability]
+    
+    static func fromDict(dict:Dictionary<String,AnyObject>) throws -> Station {
+        log.verbose("attempting to convert dict: \(dict) into Station model")
+        
+        guard let pk = dict["pk"] as? Int, fields = dict["fields"] as? Dictionary<String,AnyObject> else {
+            let cause = "Couldn't unwrap fields from \(dict)"
+            log.error(cause)
+            throw E.Unwrap(cause: cause)
+        }
+        
+        guard let name = fields["name"] as? String, indoors = fields["indoors"] as? Bool, let location = fields["location"] as? Dictionary<String,Double>, lat = location["latitude"], long = location["longitude"] else {
+            let cause = "Couldn't unwrap \(dict)"
+            log.error(cause)
+            throw E.Unwrap(cause: cause)
+        }
+        
+        let station = Station(name: name, indoors: indoors, pk: pk, location: CLLocationCoordinate2DMake(lat, long), capabilities: [.Temperature, .Pressure, .Humidity])
+        
+        log.verbose("completed building station model"/*: \(station)"*/)
+        return station
+    }
 }
 
 enum Capability {

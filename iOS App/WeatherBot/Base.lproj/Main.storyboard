@@ -120,41 +120,6 @@
             <point key="canvasLocation" x="1360" y="617"/>
         </scene>
         <!--Stationen-->
-        <scene sceneID="RpH-dJ-IDG">
-            <objects>
-                <viewController id="jKH-Zi-WBa" customClass="SettingsViewController" customModule="Lemo" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="XpE-1q-MLP"/>
-                        <viewControllerLayoutGuide type="bottom" id="LJ3-dS-e8C"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Z1d-lC-7Zh">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="WIP" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i4r-LE-MYp">
-                                <rect key="frame" x="225" y="214" width="150" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="7Ak-W0-uJ2"/>
-                                    <constraint firstAttribute="height" constant="100" id="W1J-uA-FPm"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="i4r-LE-MYp" firstAttribute="centerX" secondItem="Z1d-lC-7Zh" secondAttribute="centerX" id="IUe-gq-WqU"/>
-                            <constraint firstItem="i4r-LE-MYp" firstAttribute="top" secondItem="XpE-1q-MLP" secondAttribute="bottom" constant="150" id="enV-8h-l78"/>
-                        </constraints>
-                    </view>
-                    <navigationItem key="navigationItem" title="Stationen" id="qPz-SO-xk2"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="aDD-m0-em3" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="2116" y="1373"/>
-        </scene>
-        <!--Stationen-->
         <scene sceneID="5r8-IF-fWI">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bS9-hI-Rkr" sceneMemberID="viewController">
@@ -166,12 +131,41 @@
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>
-                        <segue destination="jKH-Zi-WBa" kind="relationship" relationship="rootViewController" id="4a7-tB-oxd"/>
+                        <segue destination="ZzX-De-G4A" kind="relationship" relationship="rootViewController" id="IqQ-zL-JP9"/>
                     </connections>
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PaX-J6-DLB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1360" y="1373"/>
+        </scene>
+        <!--Stationen-->
+        <scene sceneID="GYg-dJ-REY">
+            <objects>
+                <tableViewController id="ZzX-De-G4A" customClass="ServersViewController" customModule="Lemo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="lig-N7-gQp">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="lRL-xc-hf5">
+                                <rect key="frame" x="0.0" y="92" width="600" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lRL-xc-hf5" id="Fga-RQ-GuA">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="ZzX-De-G4A" id="1hc-cj-Pm2"/>
+                            <outlet property="delegate" destination="ZzX-De-G4A" id="D4f-Lo-gRc"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Stationen" id="O0t-nN-0Ib"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PUI-ZT-qti" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2116" y="1373"/>
         </scene>
     </scenes>
     <resources>

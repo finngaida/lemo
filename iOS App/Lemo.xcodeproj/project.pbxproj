@@ -22,6 +22,7 @@
 		C537D2261D0CD2660001CD8A /* PressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2251D0CD2660001CD8A /* PressureView.swift */; };
 		C537D2281D0CD26E0001CD8A /* HumidityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2271D0CD26E0001CD8A /* HumidityView.swift */; };
 		C537D22A1D0CEB3E0001CD8A /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2291D0CEB3E0001CD8A /* MoreButton.swift */; };
+		C537D22C1D0D02DC0001CD8A /* demostations.json in Resources */ = {isa = PBXBuildFile; fileRef = C537D22B1D0D02DC0001CD8A /* demostations.json */; };
 		C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */; };
 		C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88901D0BF58D00FFAE10 /* ViewController.swift */; };
 		C56F88941D0BF58D00FFAE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56F88921D0BF58D00FFAE10 /* Main.storyboard */; };
@@ -57,6 +58,7 @@
 		C537D2251D0CD2660001CD8A /* PressureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureView.swift; sourceTree = "<group>"; };
 		C537D2271D0CD26E0001CD8A /* HumidityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityView.swift; sourceTree = "<group>"; };
 		C537D2291D0CEB3E0001CD8A /* MoreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
+		C537D22B1D0D02DC0001CD8A /* demostations.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demostations.json; sourceTree = SOURCE_ROOT; };
 		C56F888B1D0BF58D00FFAE10 /* Lemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56F88901D0BF58D00FFAE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -187,6 +189,7 @@
 				C56F88951D0BF58D00FFAE10 /* Assets.xcassets */,
 				C56F88971D0BF58D00FFAE10 /* LaunchScreen.storyboard */,
 				C56F889A1D0BF58D00FFAE10 /* Info.plist */,
+				C537D22B1D0D02DC0001CD8A /* demostations.json */,
 				C52445C41D0CCD1200C75809 /* demo.json */,
 			);
 			name = Lemo;
@@ -255,6 +258,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C56F88991D0BF58D00FFAE10 /* LaunchScreen.storyboard in Resources */,
+				C537D22C1D0D02DC0001CD8A /* demostations.json in Resources */,
 				C56F88961D0BF58D00FFAE10 /* Assets.xcassets in Resources */,
 				C52445C51D0CCD1200C75809 /* demo.json in Resources */,
 				C56F88941D0BF58D00FFAE10 /* Main.storyboard in Resources */,
