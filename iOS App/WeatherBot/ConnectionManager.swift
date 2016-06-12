@@ -127,6 +127,8 @@ class Manager: NSObject {
             log.verbose("URL is \(url)")
             
             let b = NSUserDefaults.standardUserDefaults().boolForKey("demo")
+            log.info("getting data in " + (b ? "demo" : "live") + " mode")
+            
             let data = b ? try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe) : try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
             

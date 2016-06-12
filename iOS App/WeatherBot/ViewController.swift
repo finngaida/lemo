@@ -45,7 +45,16 @@ class ViewController: UIViewController {
         let d = NSUserDefaults.standardUserDefaults()
         let b = d.boolForKey("demo")
         d.setBool(!b, forKey: "demo")
-        reload()
+        log.verbose("switched to " + (b ? "demo" : "live") + " mode")
+        
+        Manager.sharedManager.data = nil
+        Manager.sharedManager.cachedArray = nil
+        Manager.sharedManager.cachedData = nil
+        
+        if !timer.valid {
+            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+            timer.fire()
+        }
     }
     
     func reload() {
@@ -73,6 +82,10 @@ class ViewController: UIViewController {
         let width = self.view.center.x - margin * 2
         let height = width * 1.2
         let yOff = (self.navigationController?.navigationBar.frame.height ?? 46) + 20
+        let d = NSUserDefaults.standardUserDefaults()
+        let b = d.boolForKey("demo")
+        
+        self.title = b ? "Demo" : "Live"
         
         // setup separators
         let vertical = UIView(frame: CGRectMake(self.view.center.x - 1, yOff + 10, 1, self.view.frame.height - yOff * 2))
