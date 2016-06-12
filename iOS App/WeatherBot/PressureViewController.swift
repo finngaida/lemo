@@ -22,7 +22,7 @@ class PressureViewController: UIViewController {
         chart.setDataSet(dataSet.data.map({ $0.pressure }))
         self.view.addSubview(chart)
         
-        let timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(PressureViewController.reload), userInfo: nil, repeats: true)
+        let timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(PressureViewController.reload), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
@@ -33,6 +33,7 @@ class PressureViewController: UIViewController {
             if self.dataSet.data.count != data.data.count {
                 self.dataSet = data
                 chart.setDataSet(dataSet.data.map({ $0.pressure }))
+                chart.chart?.zoomAndCenterViewAnimated(scaleX: CGFloat(dataSet.data.count) / 15, scaleY: 1.0, xIndex: CGFloat(dataSet.data.count) - 1, yValue: 0.0, axis: (chart.chart?.rightAxis.axisDependency)!, duration: 0.0)
             }
         } catch let e {
             log.error("An error occurred while unwrapping latest data: \(e)")

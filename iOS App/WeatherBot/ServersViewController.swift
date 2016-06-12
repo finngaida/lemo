@@ -62,13 +62,15 @@ class ServersViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! StationCell
+        cell.backgroundColor = .clearColor()
         
         if let stations = stations {
             let station = stations[indexPath.row]
             log.verbose("station: \(station)")
             cell.titleLabel.text = station.name
-            cell.subtitleLabel.text = station.capabilities.reduce("") { "\($0), \($1.self)" }
+            cell.subtitleLabel.text = station.capabilities.reduce("") { "\($0), \($1.rawValue)" }
         }
+        
         return cell
     }
     

@@ -21,19 +21,18 @@ class TemperatureViewController: UIViewController {
         
         chart = TemperatureView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
         chart.setDataSet(dataSet.data.map({ $0.temperature }))
+        chart.chart?.zoomAndCenterViewAnimated(scaleX: CGFloat(dataSet.data.count) / 15, scaleY: 1.0, xIndex: CGFloat(dataSet.data.count) - 1, yValue: 0.0, axis: (chart.chart?.rightAxis.axisDependency)!, duration: 0.0)
         self.view.addSubview(chart)
         
-        let timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(TemperatureViewController.reload), userInfo: nil, repeats: true)
+        let timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(TemperatureViewController.reload), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
     func reload() {
         do {
-            let data = try Manager.sharedManager.getAllData()
-            
-            if self.dataSet.data.count != data.data.count {
-                self.dataSet = data
-                chart.setDataSet(dataSet.data.map({ $0.temperature }))
+            if let data = try Manager.sharedManager.getLatestData() {
+                self.dataSet.data.append(data)
+                chart.chart?.data?.addEntry(ChartDataEntry(value: data.temperature, xIndex: self.dataSet.data.count - 1), dataSetIndex: self.dataSet.data.count - 1)
             }
         } catch let e {
             log.error("An error occurred while unwrapping latest data: \(e)")

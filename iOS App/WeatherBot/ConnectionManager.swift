@@ -21,6 +21,7 @@ class Manager: NSObject {
     static let sharedManager = Manager()
     var availableStations:[Station]?
     var data:DataSet?
+    var latestData:Data = Data(pk: 0, temperature: 0, pressure: 0, humidity: 0, timestamp: NSDate(timeIntervalSinceReferenceDate:0))
     var latestTimestamp:NSDate = NSDate()
     
     let color = UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)
@@ -94,17 +95,24 @@ class Manager: NSObject {
         //}
     }
     
-    func getLatestData() throws -> Data {
+    func getLatestData() throws -> Data? {
         log.verbose("Starting to get data")
         let data = try getAllData().data
-        guard let latest = data.first else { throw E.Unwrap(cause: "Couldn't unwrap \(data).first") }
-        return latest
+        guard let latest = data.last else { throw E.Unwrap(cause: "Couldn't unwrap \(data).first") }
+        
+        if latestData.timestamp != latest.timestamp {
+            self.latestData = latest
+            return latest
+        } else {
+            return nil
+        }
     }
     
     func getData(forTimestamp:NSDate) throws -> Data {
         fatalError("Not yet implemented")
     }
     
+    var cachedData:NSData?
     func getAllData() throws -> DataSet {
         func fetchData() throws -> DataSet {
             log.verbose("fetching new data")
@@ -117,19 +125,26 @@ class Manager: NSObject {
             
             log.verbose("URL is \(url)")
             
-            //let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-            let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            //let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
+            
+            if let cache = cachedData where cache != data {
+                return self.data
+            } else {
+                cachedData = data
+            }
             
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
             
             log.verbose("got json"/*: \(json)"*/)
             
-            guard let dict = json as? Array<Dictionary<String,AnyObject>> else {
+            guard let array = json as? Array<Dictionary<String,AnyObject>> else {
                 let cause = "Couldn't convert \(json) to Dictionary"
                 log.error(cause)
                 throw E.Conversion(cause: cause)
             }
+            let dict = Array(array[0..<150])    // Only use first 150 entries
             
             log.verbose("got dictionary"/*: \(dict)"*/)
             
@@ -141,26 +156,28 @@ class Manager: NSObject {
             return dataset
         }
         
-        if let d = data {
-            log.verbose("found data already"/*: \(d)"*/)
-            
-            if d.latestTimestamp == self.latestTimestamp {
-                log.verbose("data is relevant enough, return cached data")
-                return d
-            } else {
-                log.verbose("cached data is outdate, get new one")
-                return try fetchData()
-            }
-        } else {
-            log.verbose("no data cached, fetch new data")
-            return try fetchData()
-        }
+        return try fetchData()
+        
+        //if let d = data {
+        //log.verbose("found data already"/*: \(d)"*/)
+        
+        //if d.latestTimestamp == self.latestTimestamp {
+        //log.verbose("data is relevant enough, return cached data")
+        //return d
+        //} else {
+        //log.verbose("cached data is outdate, get new one")
+        //return try fetchData()
+        //}
+        //} else {
+        //log.verbose("no data cached, fetch new data")
+        //return try fetchData()
+        //}
     }
     
 }
 
 struct DataSet {
-    let data:[Data]
+    var data:[Data]
     let latestTimestamp:NSDate
     
     static func fromDicts(dicts:Array<Dictionary<String,AnyObject>>) throws -> DataSet {
@@ -241,7 +258,7 @@ struct Station {
     }
 }
 
-enum Capability {
+enum Capability:String {
     case Temperature, WindSpeed, WindDirection, Humidity, Pressure
 }
 

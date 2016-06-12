@@ -42,10 +42,7 @@ public class BarView: ChartView {
         chart?.leftAxis.gridColor = UIColor(white: 1.0, alpha: 0.3)
         chart?.leftAxis.gridLineWidth = 1.0
         chart?.leftAxis.setLabelCount(5, force: true)
-        chart?.zoom(2.0, scaleY: 1.0, x: self.frame.width * 2 - 20, y: 0)
-        
         chart?.gridBackgroundColor = UIColor.clearColor()
-        
         chart?.backgroundColor = UIColor.clearColor()
         chart?.layer.masksToBounds
         chart?.layer.cornerRadius = 10

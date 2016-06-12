@@ -46,8 +46,6 @@ public class LineView: ChartView {
         chart?.gridBackgroundColor = UIColor.clearColor()
         chart?.highlightPerTapEnabled = true
         chart?.highlightPerDragEnabled = true
-        chart?.zoom(2.0, scaleY: 1.0, x: self.frame.width * 2 - 20, y: 0)
-        
         chart?.backgroundColor = UIColor.clearColor()
         chart?.layer.masksToBounds
         chart?.layer.cornerRadius = 10

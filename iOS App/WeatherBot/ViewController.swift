@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
-        timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -41,9 +41,10 @@ class ViewController: UIViewController {
     
     func reload() {
         do {
-            let data = try Manager.sharedManager.getLatestData()
-            self.data = data
-            setupViews(data)
+            if let data = try Manager.sharedManager.getLatestData() {
+                self.data = data
+                setupViews(data)
+            }
         } catch let e {
             log.error("An error occurred while unwrapping latest data: \(e)")
             let alert = UIAlertController(title: "Oh nein!", message: "Es gab einen Fehler beim Laden der Daten, bitte versichere dich, dass mindestens eine Wetterstation online ist und versuche es dann nochmal!", preferredStyle: .Alert)
