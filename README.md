@@ -13,9 +13,9 @@ Entstanden im Rahmen von [Jugend Hackt Nord](http://jugendhackt.de/events/nord/)
 - und auf der [Website](http://nochkeineurl.de) und [App](http://welcheurlsollhierhin?.de) angezeigt
 
 ## Wer?
-Hardware        -> Andre Soltau
-RasPi scripts   -> Moritz Neltner
-Backend         -> Sebastian Schröder
+Hardware        -> Andre Soltau    
+RasPi scripts   -> Moritz Neltner    
+Backend         -> Sebastian Schröder    
 iOS App         -> [Finn Gaida](https://finngaida.de)
 
 ## 2Do
