@@ -65,11 +65,11 @@ class Manager: NSObject {
             
             //let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-            log.verbose("got string from server: \(String(data: data, encoding: NSUTF8StringEncoding))")
+            log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
             
             let json = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableLeaves)
             
-            log.verbose("got json: \(json)")
+            log.verbose("got json"/*: \(json)"*/)
             
             guard let dict = json as? Array<Dictionary<String,AnyObject>> else {
                 let cause = "Couldn't convert \(json) to Dictionary"
@@ -77,10 +77,10 @@ class Manager: NSObject {
                 throw E.Conversion(cause: cause)
             }
             
-            log.verbose("got dictionary: \(dict)")
+            log.verbose("got dictionary"/*: \(dict)"*/)
             
             let dataset = try DataSet.fromDicts(dict)
-            log.verbose("returning dataset. \(dataset)")
+            log.verbose("returning dataset"/* \(dataset)"*/)
             
             self.data = dataset
             self.latestTimestamp = dataset.latestTimestamp
@@ -88,7 +88,7 @@ class Manager: NSObject {
         }
         
         if let d = data {
-            log.verbose("found data already: \(d)")
+            log.verbose("found data already"/*: \(d)"*/)
             
             if d.latestTimestamp == self.latestTimestamp {
                 log.verbose("data is relevant enough, return cached data")
