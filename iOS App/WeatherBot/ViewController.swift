@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     var pressureButton:PressureButton?
     var humidityButton:HumidityButton?
     var moreButton:MoreButton?
+    var spinner :UIActivityIndicatorView!
     var timer:NSTimer!
     
     override func viewDidLoad() {
@@ -29,8 +30,13 @@ class ViewController: UIViewController {
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "demo")
-        timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
+        spinner = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+        spinner.center = CGPointMake(self.view.center.x, self.view.center.y - 50)
+        spinner.startAnimating()
+        self.view.addSubview(spinner)
+        
+        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "demo")
+        timer = NSTimer(timeInterval: 2, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -38,7 +44,7 @@ class ViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        timer.invalidate()
+        //timer.invalidate()
     }
     
     func switchMode() {
@@ -51,14 +57,16 @@ class ViewController: UIViewController {
         Manager.sharedManager.cachedArray = nil
         Manager.sharedManager.cachedData = nil
         
-        if !timer.valid {
-            NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
-            timer.fire()
-        }
+        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        timer.fire()
     }
     
     func reload() {
         do {
+            if self.spinner.superview == nil {
+                self.view.addSubview(spinner)
+            }
+            
             if let data = try Manager.sharedManager.getLatestData() {
                 self.data = data
                 setupViews(data)
@@ -76,6 +84,8 @@ class ViewController: UIViewController {
     }
     
     func setupViews(data: Data) {
+        
+        spinner.removeFromSuperview()
         
         // general
         let margin = self.view.frame.width / 20
@@ -145,37 +155,37 @@ class ViewController: UIViewController {
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "showTemperature" {
-            if let dest = segue.destinationViewController as? TemperatureViewController {
-                do {
-                    dest.dataSet = try Manager.sharedManager.getAllData()
-                } catch let e {
-                    log.error("An error occurred: \(e)")
-                    dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
-                    self.navigationController?.popToRootViewControllerAnimated(true)
-                }
-            }
-        } else if segue.identifier == "showPressure" {
-            if let dest = segue.destinationViewController as? PressureViewController {
-                do {
-                    dest.dataSet = try Manager.sharedManager.getAllData()
-                } catch let e {
-                    log.error("An error occurred: \(e)")
-                    dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
-                    self.navigationController?.popToRootViewControllerAnimated(true)
-                }
-            }
-        } else if segue.identifier == "showHumidity" {
-            if let dest = segue.destinationViewController as? HumidityViewController {
-                do {
-                    dest.dataSet = try Manager.sharedManager.getAllData()
-                } catch let e {
-                    log.error("An error occurred: \(e)")
-                    dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
-                    self.navigationController?.popToRootViewControllerAnimated(true)
-                }
-            }
-        }
+        //if segue.identifier == "showTemperature" {
+        //if let dest = segue.destinationViewController as? TemperatureViewController {
+        //do {
+        //dest.dataSet = try Manager.sharedManager.getAllData()
+        //} catch let e {
+        //log.error("An error occurred: \(e)")
+        //dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
+        //self.navigationController?.popToRootViewControllerAnimated(true)
+        //}
+        //}
+        //} else if segue.identifier == "showPressure" {
+        //if let dest = segue.destinationViewController as? PressureViewController {
+        //do {
+        //dest.dataSet = try Manager.sharedManager.getAllData()
+        //} catch let e {
+        //log.error("An error occurred: \(e)")
+        //dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
+        //self.navigationController?.popToRootViewControllerAnimated(true)
+        //}
+        //}
+        //} else if segue.identifier == "showHumidity" {
+        //if let dest = segue.destinationViewController as? HumidityViewController {
+        //do {
+        //dest.dataSet = try Manager.sharedManager.getAllData()
+        //} catch let e {
+        //log.error("An error occurred: \(e)")
+        //dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
+        //self.navigationController?.popToRootViewControllerAnimated(true)
+        //}
+        //}
+        //}
     }
     
     override func didReceiveMemoryWarning() {

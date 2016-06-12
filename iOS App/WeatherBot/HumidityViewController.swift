@@ -50,7 +50,7 @@ class HumidityViewController: UIViewController {
     }
     
     override func viewWillDisappear(animated: Bool) {
-        timer.invalidate()
+        //timer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {

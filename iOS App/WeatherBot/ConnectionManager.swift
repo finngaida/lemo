@@ -100,6 +100,7 @@ class Manager: NSObject {
         let data = try getAllData().data
         guard let latest = data.last else { throw E.Unwrap(cause: "Couldn't unwrap \(data).first") }
         
+        log.verbose("comparing \(latestData.timestamp) to \(latest.timestamp)")
         if latestData.timestamp != latest.timestamp {
             self.latestData = latest
             return latest
@@ -133,7 +134,7 @@ class Manager: NSObject {
             log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
             
             // check for duplicate 1
-            if let cache = cachedData where cache != data {
+            if let cache = cachedData where cache == data {
                 log.info("nothing new, aborting")
                 return self.data!
             } else {
@@ -159,9 +160,11 @@ class Manager: NSObject {
             }
             
             // Only use first 150 entries
-            //if array.count > 151 {
-            //array = Array(array[array.count-151..<array.count-1])
-            //}
+            log.verbose("array has \(array.count) entries")
+            if array.count > 51 {
+                array = Array(array[array.count-51..<array.count-1])
+            }
+            log.verbose("now array has \(array.count) entries")
             
             log.verbose("got dictionary"/*: \(dict)"*/)
             
