@@ -130,7 +130,8 @@ class Manager: NSObject {
             log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
             
             if let cache = cachedData where cache != data {
-                return self.data
+                log.info("nothing new, aborting")
+                return self.data!
             } else {
                 cachedData = data
             }

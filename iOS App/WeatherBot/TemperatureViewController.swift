@@ -21,7 +21,7 @@ class TemperatureViewController: UIViewController {
         
         chart = TemperatureView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
         chart.setDataSet(dataSet.data.map({ $0.temperature }))
-        chart.chart?.zoomAndCenterViewAnimated(scaleX: CGFloat(dataSet.data.count) / 15, scaleY: 1.0, xIndex: CGFloat(dataSet.data.count) - 1, yValue: 0.0, axis: (chart.chart?.rightAxis.axisDependency)!, duration: 0.0)
+        
         self.view.addSubview(chart)
         
         let timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(TemperatureViewController.reload), userInfo: nil, repeats: true)
