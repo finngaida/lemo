@@ -18,5 +18,11 @@ RasPi scripts   -> Moritz Neltner
 Backend         -> Sebastian Schröder
 iOS App         -> [Finn Gaida](https://finngaida.de)
 
+## 2Do
+- Präsentation vorbereiten
+- Stationsliste 
+- Screenshots zur Repo
+- Mehr 2Dos schreiben
+
 ## Lizenz
 [MIT](LICENSE). TL;DR: Mach, was du willst, solange du uns Credits gibst.
