@@ -24,9 +24,11 @@ class ServersViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ServersViewController.reload))
+        
         let bg = GradientView(frame: self.view.frame)
         bg.colors = [UIColor(red: 0.349, green: 0.780, blue: 0.980, alpha: 1.00), UIColor(red: 0.000, green: 0.392, blue: 0.992, alpha: 1.00)]
-        self.view.insertSubview(bg, belowSubview: self.tableView)
+        self.view.insertSubview(bg, atIndex: 0)
         self.tableView.backgroundColor = .clearColor()
         self.tableView.separatorColor = .whiteColor()
         
@@ -37,6 +39,10 @@ class ServersViewController: UITableViewController {
             let cause = "Couldn't get stations, because: \(e)"
             log.error(cause)
         }
+    }
+    
+    func reload() {
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -60,10 +66,9 @@ class ServersViewController: UITableViewController {
         if let stations = stations {
             let station = stations[indexPath.row]
             log.verbose("station: \(station)")
-            cell.textLabel?.text = station.name
-            cell.detailTextLabel?.text = station.capabilities.reduce("") { "\($0), \($1.self)" }
+            cell.titleLabel.text = station.name
+            cell.subtitleLabel.text = station.capabilities.reduce("") { "\($0), \($1.self)" }
         }
-        
         return cell
     }
     
