@@ -19,7 +19,7 @@ public class LineView: ChartView {
     }
     
     public override func setupChart() {
-        chart = LineChartView(frame: CGRectMake(25, 85, self.frame.width - 40, self.frame.height - 110))
+        chart = LineChartView(frame: CGRectMake(10, 85, self.frame.width - 10, self.frame.height - 110))
         chart?.delegate = self
         chart?.setScaleEnabled(true)
         chart?.dragEnabled = true
@@ -33,16 +33,20 @@ public class LineView: ChartView {
         chart?.rightAxis.showOnlyMinMaxEnabled = false
         chart?.xAxis.enabled = true
         chart?.xAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
-        chart?.rightAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.xAxis.gridColor = UIColor(white: 1.0, alpha: 0.3)
+        chart?.rightAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.rightAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.rightAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
+        chart?.leftAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.leftAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.leftAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
+        chart?.leftAxis.gridColor = UIColor(white: 1.0, alpha: 0.3)
+        chart?.leftAxis.gridLineWidth = 1.0
+        chart?.leftAxis.setLabelCount(5, force: true)
         chart?.gridBackgroundColor = UIColor.clearColor()
         chart?.highlightPerTapEnabled = true
         chart?.highlightPerDragEnabled = true
-        chart?.zoom(2.0, scaleY: 1.0, x: 0, y: 0)
+        chart?.zoom(2.0, scaleY: 1.0, x: self.frame.width * 2 - 20, y: 0)
         
         chart?.backgroundColor = UIColor.clearColor()
         chart?.layer.masksToBounds
@@ -84,12 +88,12 @@ public class LineView: ChartView {
         var xVals = (1...data.count).map({"\($0)"})
         xVals[0] = "Jun \(xVals[0])"   // TODO Real month
         
-        let avg = yVals.map({Int($0.value)}).average
-        let average = ChartLimitLine(limit: avg)
-        average.lineColor = UIColor(white: 1.0, alpha: 0.5)
-        average.lineWidth = 1
-        average.lineDashLengths = [5.0]
-        chart?.rightAxis.addLimitLine(average)
+        //let avg = yVals.map({Int($0.value)}).average
+        //let average = ChartLimitLine(limit: avg)
+        //average.lineColor = UIColor(white: 1.0, alpha: 0.5)
+        //average.lineWidth = 1
+        //average.lineDashLengths = [5.0]
+        //chart?.rightAxis.addLimitLine(average)
         
         chart?.data = LineChartData(xVals: xVals, dataSet: set)
         

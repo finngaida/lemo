@@ -17,6 +17,7 @@ class ViewController: UIViewController {
     var temperatureButton:TemperatureButton?
     var pressureButton:PressureButton?
     var humidityButton:HumidityButton?
+    var moreButton:MoreButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -91,6 +92,21 @@ class ViewController: UIViewController {
             self.humidityButton = HumidityButton(humidity: data.humidity, frame: CGRectMake(margin, yOff + self.view.center.x + margin * 3, width, height), closure: {
                 log.verbose("Humidity tapped")
                 self.performSegueWithIdentifier("showHumidity", sender: self)
+            })
+            self.view.addSubview(self.humidityButton!)
+        }
+        
+        if let moreButton = self.moreButton {
+            moreButton.setValue("Mehr")
+        } else {
+            self.moreButton = MoreButton(text: "Mehr", frame: CGRectMake(margin, yOff + self.view.center.x + margin * 3, width, height), closure: {
+                log.verbose("Mehr tapped")
+                let alert = UIAlertController(title: "Mehr Sensoren", message: "Für mehr Sensorik, besuche bitte den Adafruit webstore", preferredStyle: .Alert)
+                alert.addAction(UIAlertAction(title: "Store öffnen", style: .Default, handler: { (action) in
+                    UIApplication.sharedApplication().openURL(NSURL(string: "https://www.adafruit.com/category/35")!)
+                }))
+                alert.addAction(UIAlertAction(title: "Später", style: .Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
             })
             self.view.addSubview(self.humidityButton!)
         }

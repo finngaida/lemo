@@ -21,6 +21,7 @@
 		C52445C51D0CCD1200C75809 /* demo.json in Resources */ = {isa = PBXBuildFile; fileRef = C52445C41D0CCD1200C75809 /* demo.json */; };
 		C537D2261D0CD2660001CD8A /* PressureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2251D0CD2660001CD8A /* PressureView.swift */; };
 		C537D2281D0CD26E0001CD8A /* HumidityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2271D0CD26E0001CD8A /* HumidityView.swift */; };
+		C537D22A1D0CEB3E0001CD8A /* MoreButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C537D2291D0CEB3E0001CD8A /* MoreButton.swift */; };
 		C56F888F1D0BF58D00FFAE10 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */; };
 		C56F88911D0BF58D00FFAE10 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C56F88901D0BF58D00FFAE10 /* ViewController.swift */; };
 		C56F88941D0BF58D00FFAE10 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C56F88921D0BF58D00FFAE10 /* Main.storyboard */; };
@@ -55,6 +56,7 @@
 		C52445C41D0CCD1200C75809 /* demo.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = demo.json; sourceTree = SOURCE_ROOT; };
 		C537D2251D0CD2660001CD8A /* PressureView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PressureView.swift; sourceTree = "<group>"; };
 		C537D2271D0CD26E0001CD8A /* HumidityView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HumidityView.swift; sourceTree = "<group>"; };
+		C537D2291D0CEB3E0001CD8A /* MoreButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreButton.swift; sourceTree = "<group>"; };
 		C56F888B1D0BF58D00FFAE10 /* Lemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Lemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C56F888E1D0BF58D00FFAE10 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C56F88901D0BF58D00FFAE10 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -151,6 +153,7 @@
 				C5BC7ABA1D0C5E0F002855B8 /* TemperatureButton.swift */,
 				C5BC7ABC1D0C5EB6002855B8 /* PressureButton.swift */,
 				C5BC7ABE1D0C5EE3002855B8 /* HumidityButton.swift */,
+				C537D2291D0CEB3E0001CD8A /* MoreButton.swift */,
 			);
 			name = Buttons;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				C56F88A31D0C174900FFAE10 /* ServersViewController.swift in Sources */,
 				C52445B81D0CC01B00C75809 /* LineView.swift in Sources */,
 				C5BC7ABB1D0C5E0F002855B8 /* TemperatureButton.swift in Sources */,
+				C537D22A1D0CEB3E0001CD8A /* MoreButton.swift in Sources */,
 				C52445B01D0CB8FC00C75809 /* PressureViewController.swift in Sources */,
 				C52445B21D0CB90300C75809 /* HumidityViewController.swift in Sources */,
 			);

@@ -7,19 +7,18 @@
 //
 
 import UIKit
-import PNChart
 
 class PressureViewController: UIViewController {
     
     var dataSet:DataSet!
-    var chart:PNLineChart!
+    var chart:PressureView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Graph"
         
-        let chart = PressureView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
+        chart = PressureView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
         chart.setDataSet(dataSet.data.map({ $0.pressure }))
         self.view.addSubview(chart)
     }

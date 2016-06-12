@@ -7,19 +7,18 @@
 //
 
 import UIKit
-import PNChart
 
 class HumidityViewController: UIViewController {
     
     var dataSet:DataSet!
-    var chart:PNBarChart!
+    var chart:HumidityView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Graph"
         
-        let chart = HumidityView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
+        chart = HumidityView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
         chart.setDataSet(dataSet.data.map({ $0.humidity }))
         self.view.addSubview(chart)
     }

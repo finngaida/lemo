@@ -17,7 +17,7 @@ public class BarView: ChartView {
     }
     
     public override func setupChart() {
-        chart = BarChartView(frame: CGRectMake(25, 85, self.frame.width - 40, self.frame.height - 110))
+        chart = BarChartView(frame: CGRectMake(10, 85, self.frame.width - 10, self.frame.height - 110))
         chart?.delegate = self
         chart?.setScaleEnabled(true)
         chart?.dragEnabled = true
@@ -30,14 +30,19 @@ public class BarView: ChartView {
         chart?.rightAxis.gridColor = UIColor.whiteColor()
         chart?.rightAxis.showOnlyMinMaxEnabled = true
         chart?.xAxis.enabled = true
-        chart?.leftAxis.startAtZeroEnabled = true
         chart?.xAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
-        chart?.rightAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.xAxis.gridColor = UIColor(white: 1.0, alpha: 0.3)
+        chart?.rightAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.rightAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.rightAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
+        chart?.leftAxis.startAtZeroEnabled = true
+        chart?.leftAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.leftAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.leftAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
+        chart?.leftAxis.gridColor = UIColor(white: 1.0, alpha: 0.3)
+        chart?.leftAxis.gridLineWidth = 1.0
+        chart?.leftAxis.setLabelCount(5, force: true)
+        chart?.zoom(2.0, scaleY: 1.0, x: self.frame.width * 2 - 20, y: 0)
         
         chart?.gridBackgroundColor = UIColor.clearColor()
         

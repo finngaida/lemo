@@ -7,9 +7,7 @@ target 'Lemo' do
     pod 'ActionKit'
     pod 'SwiftyBeaver'
     pod 'GradientView'
-    pod 'PNChart'
     pod 'Charts/Realm'
-    #pod 'ResearchKit'
     pod 'AsyncSwift'
 end
 
