@@ -113,6 +113,7 @@ class Manager: NSObject {
     }
     
     var cachedData:NSData?
+    var cachedArray:Array<Dictionary<String,AnyObject>>?
     func getAllData() throws -> DataSet {
         func fetchData() throws -> DataSet {
             log.verbose("fetching new data")
@@ -129,6 +130,7 @@ class Manager: NSObject {
             //let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
             
+            // check for duplicate 1
             if let cache = cachedData where cache != data {
                 log.info("nothing new, aborting")
                 return self.data!
@@ -145,12 +147,22 @@ class Manager: NSObject {
                 log.error(cause)
                 throw E.Conversion(cause: cause)
             }
-            let dict = Array(array[0..<150])    // Only use first 150 entries
+            
+            // check for duplicate 2
+            if let cache2 = cachedArray where cache2.count == array.count {
+                log.info("new, but no new entries? aborting")
+                return self.data!
+            } else {
+                cachedArray = array
+            }
+            
+            // Only use first 150 entries
+            let dict = Array(array[0..<150])
             
             log.verbose("got dictionary"/*: \(dict)"*/)
             
             let dataset = try DataSet.fromDicts(dict)
-            log.verbose("returning dataset"/* \(dataset)"*/)
+            log.info("returning new dataset"/* \(dataset)"*/)
             
             self.data = dataset
             self.latestTimestamp = dataset.latestTimestamp

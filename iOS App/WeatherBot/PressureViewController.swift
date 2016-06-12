@@ -12,6 +12,7 @@ class PressureViewController: UIViewController {
     
     var dataSet:DataSet!
     var chart:PressureView!
+    var timer:NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +23,7 @@ class PressureViewController: UIViewController {
         chart.setDataSet(dataSet.data.map({ $0.pressure }))
         self.view.addSubview(chart)
         
-        let timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(PressureViewController.reload), userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(PressureViewController.reload), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
@@ -45,6 +46,10 @@ class PressureViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {

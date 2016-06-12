@@ -13,6 +13,7 @@ class TemperatureViewController: UIViewController {
     
     var dataSet:DataSet!
     var chart:TemperatureView!
+    var timer:NSTimer!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,10 +22,11 @@ class TemperatureViewController: UIViewController {
         
         chart = TemperatureView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
         chart.setDataSet(dataSet.data.map({ $0.temperature }))
+        chart.chart?.zoom(CGFloat(dataSet.data.count) / 15, scaleY: 1.0, x: chart.frame.width * 14, y: 0)
         
         self.view.addSubview(chart)
         
-        let timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(TemperatureViewController.reload), userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(TemperatureViewController.reload), userInfo: nil, repeats: true)
         NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
@@ -44,6 +46,10 @@ class TemperatureViewController: UIViewController {
             self.presentViewController(alert, animated: true, completion: nil)
             return
         }
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        timer.invalidate()
     }
     
     override func didReceiveMemoryWarning() {

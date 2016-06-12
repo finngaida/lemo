@@ -28,7 +28,7 @@ class ViewController: UIViewController {
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
-        timer = NSTimer(timeInterval: 2.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
+        timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -122,10 +122,6 @@ class ViewController: UIViewController {
         
     }
     
-    override func viewDidAppear(animated: Bool) {
-        
-    }
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "showTemperature" {
             if let dest = segue.destinationViewController as? TemperatureViewController {
@@ -133,6 +129,8 @@ class ViewController: UIViewController {
                     dest.dataSet = try Manager.sharedManager.getAllData()
                 } catch let e {
                     log.error("An error occurred: \(e)")
+                    dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
+                    self.navigationController?.popToRootViewControllerAnimated(true)
                 }
             }
         } else if segue.identifier == "showPressure" {
@@ -141,6 +139,8 @@ class ViewController: UIViewController {
                     dest.dataSet = try Manager.sharedManager.getAllData()
                 } catch let e {
                     log.error("An error occurred: \(e)")
+                    dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
+                    self.navigationController?.popToRootViewControllerAnimated(true)
                 }
             }
         } else if segue.identifier == "showHumidity" {
@@ -149,6 +149,8 @@ class ViewController: UIViewController {
                     dest.dataSet = try Manager.sharedManager.getAllData()
                 } catch let e {
                     log.error("An error occurred: \(e)")
+                    dest.dataSet = DataSet(data: [Data(pk: 0, temperature: 23.0, pressure: 1010.29, humidity: 27.05, timestamp: NSDate())], latestTimestamp: NSDate())
+                    self.navigationController?.popToRootViewControllerAnimated(true)
                 }
             }
         }
