@@ -101,6 +101,10 @@ public class LineView: ChartView {
         //ResearchKitGraphHelper.sharedHelper.data = data.map({ORKRangedPoint(value: CGFloat(Float(self.majorValueFromHealthObject($0)) ?? 0))})
     }
     
+    public override func chartScaled(chartView: ChartViewBase, scaleX: CGFloat, scaleY: CGFloat) {
+        chart?.zoom(scaleX, scaleY: 1.0, x: (chart?.centerOffsets.x)!, y: (chart?.centerOffsets.y)!)
+    }
+    
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
