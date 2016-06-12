@@ -13,8 +13,11 @@ class TemperatureButton: BaseButton {
     init(temp: Double, frame: CGRect, closure: () -> ()) {
         super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "temperature")
-        
-        let t = String(format: "%.2f", temp)
+        setValue(temp)
+    }
+    
+    func setValue(val:Double) {
+        let t = String(format: "%.2f", val)
         self.label?.text = "\(t) °C"
     }
     

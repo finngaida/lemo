@@ -21,6 +21,8 @@ class Manager: NSObject {
     static let sharedManager = Manager()
     var availableServers:[Server]?
     var data:DataSet?
+    var latestTimestamp:NSDate = NSDate()
+    
     let color = UIColor(red: 0.988, green: 0.294, blue: 0.239, alpha: 1.00)
     
     func xLabelsFromSet(set:DataSet) -> [String] {
@@ -81,12 +83,14 @@ class Manager: NSObject {
             log.verbose("returning dataset. \(dataset)")
             
             self.data = dataset
+            self.latestTimestamp = dataset.latestTimestamp
             return dataset
         }
         
         if let d = data {
             log.verbose("found data already: \(d)")
-            if NSDate().timeIntervalSinceDate(d.latestTimestamp) < 10 * 60 {
+            
+            if d.latestTimestamp == self.latestTimestamp {
                 log.verbose("data is relevant enough, return cached data")
                 return d
             } else {

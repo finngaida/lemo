@@ -30,7 +30,7 @@ public class LineView: ChartView {
         chart?.legend.enabled = false
         chart?.descriptionText = ""
         chart?.rightAxis.gridColor = UIColor.whiteColor()
-        chart?.rightAxis.showOnlyMinMaxEnabled = true
+        chart?.rightAxis.showOnlyMinMaxEnabled = false
         chart?.xAxis.enabled = true
         chart?.xAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
         chart?.rightAxis.labelTextColor = UIColor(white: 1.0, alpha: 0.8)
@@ -40,6 +40,9 @@ public class LineView: ChartView {
         chart?.leftAxis.axisLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.leftAxis.zeroLineColor = UIColor(white: 1.0, alpha: 0.5)
         chart?.gridBackgroundColor = UIColor.clearColor()
+        chart?.highlightPerTapEnabled = true
+        chart?.highlightPerDragEnabled = true
+        chart?.zoom(2.0, scaleY: 1.0, x: 0, y: 0)
         
         chart?.backgroundColor = UIColor.clearColor()
         chart?.layer.masksToBounds
@@ -79,7 +82,7 @@ public class LineView: ChartView {
         set.fill = ChartFill(linearGradient: CGGradientCreateWithColors(nil, [UIColor(white: 1.0, alpha: 0.0).CGColor, UIColor(white: 1.0, alpha: 0.4).CGColor], nil)!, angle: 90.0)
         
         var xVals = (1...data.count).map({"\($0)"})
-        xVals[0] = "Mar \(xVals[0])"   // TODO Real month
+        xVals[0] = "Jun \(xVals[0])"   // TODO Real month
         
         let avg = yVals.map({Int($0.value)}).average
         let average = ChartLimitLine(limit: avg)

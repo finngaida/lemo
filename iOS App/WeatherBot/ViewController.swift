@@ -14,6 +14,9 @@ import ActionKit
 class ViewController: UIViewController {
     
     var data:Data?
+    var temperatureButton:TemperatureButton?
+    var pressureButton:PressureButton?
+    var humidityButton:HumidityButton?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,7 +26,8 @@ class ViewController: UIViewController {
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
-        reload()
+        let timer = NSTimer(timeInterval: 1.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
+        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
     }
     
     func reload() {
@@ -61,22 +65,34 @@ class ViewController: UIViewController {
         }
         
         // setup buttons
-        let temperatureButton = TemperatureButton(temp: data.temperature, frame: CGRectMake(margin, yOff + margin, width, height), closure: {
-            log.verbose("Temperature tapped")
-            self.performSegueWithIdentifier("showTemperature", sender: self)
-        })
-        let pressureButton = PressureButton(pressure: data.pressure, frame: CGRectMake(self.view.center.x + margin, yOff + margin, width, height), closure: {
-            log.verbose("pressure tapped")
-            self.performSegueWithIdentifier("showPressure", sender: self)
-        })
-        let humidityButton = HumidityButton(humidity: data.humidity, frame: CGRectMake(margin, yOff + self.view.center.x + margin * 3, width, height), closure: {
-            log.verbose("Humidity tapped")
-            self.performSegueWithIdentifier("showHumidity", sender: self)
-        })
-        //let temperatureButton = TemperatureButton(temp: temp, frame: CGRectMake(0,0,self.view.frame.width / 2,self.view.frame.width / 2))
+        if let temperatureButton = self.temperatureButton {
+            temperatureButton.setValue(data.temperature)
+        } else {
+            self.temperatureButton = TemperatureButton(temp: data.temperature, frame: CGRectMake(margin, yOff + margin, width, height), closure: {
+                log.verbose("Temperature tapped")
+                self.performSegueWithIdentifier("showTemperature", sender: self)
+            })
+            self.view.addSubview(self.temperatureButton!)
+        }
         
-        [temperatureButton, pressureButton, humidityButton].forEach {
-            self.view.addSubview($0)
+        if let pressureButton = self.pressureButton {
+            pressureButton.setValue(data.pressure)
+        } else {
+            self.pressureButton = PressureButton(pressure: data.pressure, frame: CGRectMake(self.view.center.x + margin, yOff + margin, width, height), closure: {
+                log.verbose("Pressure tapped")
+                self.performSegueWithIdentifier("showPressure", sender: self)
+            })
+            self.view.addSubview(self.pressureButton!)
+        }
+        
+        if let humidityButton = self.humidityButton {
+            humidityButton.setValue(data.humidity)
+        } else {
+            self.humidityButton = HumidityButton(humidity: data.humidity, frame: CGRectMake(margin, yOff + self.view.center.x + margin * 3, width, height), closure: {
+                log.verbose("Humidity tapped")
+                self.performSegueWithIdentifier("showHumidity", sender: self)
+            })
+            self.view.addSubview(self.humidityButton!)
         }
         
     }

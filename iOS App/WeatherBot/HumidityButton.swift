@@ -13,9 +13,12 @@ class HumidityButton: BaseButton {
     init(humidity: Double, frame: CGRect, closure: () -> ()) {
         super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "humidity")
-        
-        let h = String(format: "%.1f", humidity)
-        self.label?.text = "\(h) %"
+        setValue(humidity)
+    }
+    
+    func setValue(val:Double) {
+        let t = String(format: "%.2f", val)
+        self.label?.text = "\(t) %"
     }
     
     required init?(coder aDecoder: NSCoder) {

@@ -13,9 +13,12 @@ class PressureButton: BaseButton {
     init(pressure: Double, frame: CGRect, closure: () -> ()) {
         super.init(frame: frame, closure: closure)
         self.image?.image = UIImage(named: "pressure")
-        
-        let p = String(format: "%.2f", pressure)
-        self.label?.text = "\(p) hPa"
+        setValue(pressure)
+    }
+    
+    func setValue(val:Double) {
+        let t = String(format: "%.2f", val)
+        self.label?.text = "\(t) hPa"
     }
     
     required init?(coder aDecoder: NSCoder) {
