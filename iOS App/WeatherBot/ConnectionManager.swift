@@ -126,8 +126,8 @@ class Manager: NSObject {
             
             log.verbose("URL is \(url)")
             
-            let data = try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
-            //let data = try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe)
+            let b = NSUserDefaults.standardUserDefaults().boolForKey("demo")
+            let data = b ? try NSData(contentsOfFile: NSBundle.mainBundle().pathForResource("demo", ofType: "json")!, options: NSDataReadingOptions.DataReadingMappedIfSafe) : try NSData(contentsOfURL: url, options: NSDataReadingOptions.DataReadingMappedIfSafe)
             log.verbose("got string from server"/*: \(String(data: data, encoding: NSUTF8StringEncoding))"*/)
             
             // check for duplicate 1
@@ -142,7 +142,7 @@ class Manager: NSObject {
             
             log.verbose("got json"/*: \(json)"*/)
             
-            guard let array = json as? Array<Dictionary<String,AnyObject>> else {
+            guard var array = json as? Array<Dictionary<String,AnyObject>> else {
                 let cause = "Couldn't convert \(json) to Dictionary"
                 log.error(cause)
                 throw E.Conversion(cause: cause)
@@ -157,11 +157,13 @@ class Manager: NSObject {
             }
             
             // Only use first 150 entries
-            let dict = Array(array[0..<150])
+            //if array.count > 151 {
+            //array = Array(array[array.count-151..<array.count-1])
+            //}
             
             log.verbose("got dictionary"/*: \(dict)"*/)
             
-            let dataset = try DataSet.fromDicts(dict)
+            let dataset = try DataSet.fromDicts(array)
             log.info("returning new dataset"/* \(dataset)"*/)
             
             self.data = dataset

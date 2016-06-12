@@ -21,6 +21,7 @@ class PressureViewController: UIViewController {
         
         chart = PressureView(frame: CGRectMake(5, 70, self.view.frame.width - 10, self.view.frame.height - 130))
         chart.setDataSet(dataSet.data.map({ $0.pressure }))
+        chart.chart?.zoom(CGFloat(dataSet.data.count) / 15, scaleY: 1.0, x: chart.frame.width * 14, y: 0)
         self.view.addSubview(chart)
         
         timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(PressureViewController.reload), userInfo: nil, repeats: true)

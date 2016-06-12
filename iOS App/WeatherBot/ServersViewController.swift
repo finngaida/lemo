@@ -26,7 +26,7 @@ class ServersViewController: UITableViewController {
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ServersViewController.reload))
         
-        let bg = GradientView(frame: self.view.frame)
+        let bg = GradientView(frame: CGRectMake(0, -500, self.view.frame.width, self.view.frame.height + 1000))
         bg.colors = [UIColor(red: 0.349, green: 0.780, blue: 0.980, alpha: 1.00), UIColor(red: 0.000, green: 0.392, blue: 0.992, alpha: 1.00)]
         self.view.insertSubview(bg, atIndex: 0)
         self.tableView.backgroundColor = .clearColor()
@@ -68,7 +68,7 @@ class ServersViewController: UITableViewController {
             let station = stations[indexPath.row]
             log.verbose("station: \(station)")
             cell.titleLabel.text = station.name
-            cell.subtitleLabel.text = station.capabilities.reduce("") { "\($0), \($1.rawValue)" }
+            cell.subtitleLabel.text = "Temperatur, Luftdruck, Luftfeuchtigkeit" //station.capabilities.reduce("") { "\($0), \($1.rawValue)" }
         }
         
         return cell

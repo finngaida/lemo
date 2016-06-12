@@ -23,11 +23,13 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(ViewController.switchMode))
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Refresh, target: self, action: #selector(ViewController.reload))
         let bg = GradientView(frame: self.view.frame)
         bg.colors = [UIColor(red: 1.000, green: 0.725, blue: 0.255, alpha: 1.00), Manager.sharedManager.color]
         self.view.addSubview(bg)
         
+        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "demo")
         timer = NSTimer(timeInterval: 5.0, target: self, selector: #selector(ViewController.reload), userInfo: nil, repeats: true)
     }
     
@@ -37,6 +39,13 @@ class ViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         timer.invalidate()
+    }
+    
+    func switchMode() {
+        let d = NSUserDefaults.standardUserDefaults()
+        let b = d.boolForKey("demo")
+        d.setBool(!b, forKey: "demo")
+        reload()
     }
     
     func reload() {
